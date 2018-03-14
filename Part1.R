@@ -1,3 +1,6 @@
+## station 46035 has missing data in 2013, and 2012's data is not correct
+## we skipped the data of 2013 and remain the data of 2012
+
 library(tidyverse)
 library(stringr)
 
