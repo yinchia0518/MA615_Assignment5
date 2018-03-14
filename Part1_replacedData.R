@@ -10,7 +10,7 @@ years <- c(1988:2017)
 urls1 <- str_c(url1, years, url3, sep = "")
 urls2 <- str_c(url2, years, url3, sep = "")
 filenames <- str_c("mr", years, sep = "")
-N <- length(urls)
+N <- length(years)
 
 #create files for each year 
 i<-1
@@ -36,8 +36,8 @@ while (i <= N){
   file <- subset(file, select=c("YYYY", "MM","DD","hh","ATMP","WTMP"))
   file$ATMP<-as.numeric(file$ATMP)
   file$WTMP<-as.numeric(file$WTMP)
-  file <- subset(file, ATMP!= 999.0)
-  file <- subset(file, WTMP!= 999.0)
+  file <- subset(file, ATMP!= 999.0 &ATMP!= 99.0)
+  file <- subset(file, WTMP!= 999.0 &WTMP!= 99.0)
   # file <- file[-outliersIndex(file$ATMP),]
   # file <- file[-outliersIndex(file$WTMP),]
   annualMean_AT <- mean(file$ATMP, na.rm=TRUE)
@@ -68,8 +68,8 @@ library("reshape2")
 library("ggplot2")
 
 ggplot(MR_DailyNoon, aes(x = FullTime)) + 
-  geom_point(aes(y = ATMP), colour="blue", size = 0.5) + 
-  geom_point(aes(y = WTMP), colour = "grey", size = 0.5) +
+  geom_line(aes(y = ATMP), colour="blue", size = 0.5) + 
+  geom_line(aes(y = WTMP), colour = "grey", size = 0.5) +
   ylab(label="Celsius degrees") + 
   xlab("Time")
 
