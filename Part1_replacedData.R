@@ -31,11 +31,15 @@ while (i <= N){
   if(i>=1 && i<=11){
     file$YYYY<-paste("19", file$YYYY, sep = "")
   }
+  #print(file)
   #only select time, air temp and water temp
   file <- subset(file, select=c("YYYY", "MM","DD","hh","ATMP","WTMP"))
   file$ATMP<-as.numeric(file$ATMP)
   file$WTMP<-as.numeric(file$WTMP)
-  
+  file <- subset(file, ATMP!= 999.0)
+  file <- subset(file, WTMP!= 999.0)
+  # file <- file[-outliersIndex(file$ATMP),]
+  # file <- file[-outliersIndex(file$WTMP),]
   annualMean_AT <- mean(file$ATMP, na.rm=TRUE)
   annualMean_WT <- mean(file$WTMP, na.rm=TRUE)
   
@@ -43,13 +47,13 @@ while (i <= N){
     MR <- file
     annualMeans_AT <- annualMean_AT
     annualMeans_WT <- annualMean_WT
-    
   }
   else{
     MR <- rbind.data.frame(MR, file)
     annualMeans_AT <- rbind.data.frame(annualMeans_AT, annualMean_AT)
     annualMeans_WT <- rbind.data.frame(annualMeans_WT, annualMean_WT)
-    }
+  }
+  #print(MR)
   i<-i+1
 }
   
@@ -68,6 +72,20 @@ ggplot(MR_DailyNoon, aes(x = FullTime)) +
   geom_point(aes(y = WTMP), colour = "grey", size = 0.5) +
   ylab(label="Celsius degrees") + 
   xlab("Time")
+
+
+
+outliersIndex <- function(data) {
+  q1 <- quantile(data)[2]
+  q3 <- quantile(data)[4]
+  iqr <- IQR(data)
+  
+  threshold.upper = (iqr * 3) + q3
+  threshold.lower = q1 - (iqr * 3)
+  index <- which(data > threshold.upper | data < threshold.lower) #retrun positions that are TRUE in the vector
+  return(index) 
+}
+
 
 
 #create annual temprature table, which containing means of temperatures in each year
