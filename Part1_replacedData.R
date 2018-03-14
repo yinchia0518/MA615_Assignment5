@@ -1,5 +1,5 @@
-http://www.ndbc.noaa.gov/view_text_file.php?filename=46070h2012.txt.gz&dir=data/historical/stdmet/
-  
+## station 46035 has missing data in 2012 and 2013
+## we replaced the data of these two years with nearby buoy(46070)
 library(tidyverse)
 library(stringr)
 
@@ -74,7 +74,6 @@ ggplot(MR_DailyNoon, aes(x = FullTime)) +
   xlab("Time")
 
 
-
 outliersIndex <- function(data) {
   q1 <- quantile(data)[2]
   q3 <- quantile(data)[4]
@@ -86,11 +85,10 @@ outliersIndex <- function(data) {
   return(index) 
 }
 
-
-
 #create annual temprature table, which containing means of temperatures in each year
 annaulTemprature <- data.frame(c(1988:2017), annualMeans_AT, annualMeans_WT)
 colnames(annaulTemprature) <- c("Year", "Air Temperature", "Water Temperature")
+
 
 ggplot(annaulTemprature, aes(x = Year)) + 
   geom_line(aes(y = annualMeans_AT), colour="blue", size = 0.5) + 
