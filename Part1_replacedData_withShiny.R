@@ -56,16 +56,13 @@ while (i <= N){
   #print(MR)
   i<-i+1
 }
-  
+
 #combine all dates and times into one column for creating time series graph
 MR$FullTime <-strptime(with(MR, paste(YYYY, MM, DD, hh, sep="-")), format="%Y-%m-%d-%H")
 MR$FullTime
 
 #only select daily noon data 
 MR_DailyNoon <- subset(MR, hh==12)
-
-###############################################################################################
-#PLOTS
 
 library("reshape2")
 library("ggplot2")
@@ -99,6 +96,40 @@ ggplot(annaulTemprature, aes(x = Year)) +
   ylab(label="Celsius degrees") + 
   xlab("Time")
 
+######################################################################################################################
+
+#Statistics
+
+##1. Test the difference based on choice of time of the day
+
+MR_Daily20 <- subset(MR, hh==20)[,-c(4,7)]
+  ##obtaining same format data for daily tmp at 20:00
+colnames(MR_Daily20) <- c("YYYY","MM","DD","ATMP20","WTMP20")
+MR_NoonVS20 <- as.data.frame(left_join(MR_DailyNoon[,-c(4,7)],MR_Daily20))
+t.test(MR_NoonVS20["ATMP"],MR_NoonVS20["ATMP20"])    ##test on air tmp
+  ##p=0.3262 > 0.05, we cannot reject the null hypothesis that daily noon and 17:00
+  ##air tmp have the same mean
+t.test(MR_NoonVS20["WTMP"],MR_NoonVS20["WTMP20"])    ##test on water tmp
+  ##p=0.7733 > 0.05, we cannot reject the null hypothesis that daily noon and 17:00
+  ##water tmp have the same mean
+
+##Choice of the hour during a day does not make a difference
+
+##2. Test the difference from 1988 to 2017
+
+MR_1988 <- subset(MR, YYYY==1988)[,-c(1,7)]  
+MR_2017 <- subset(MR, YYYY==2017)[,-c(1,7)]
+colnames(MR_2017) <- c("MM","DD","hh","ATMP17","WTMP17")
+##obtaining same format data for daily tmp at 17:00
+MR_1988VS2017 <- as.data.frame(left_join(MR_1988,MR_2017))
+t.test(MR_1988VS2017["ATMP"],MR_1988VS2017["ATMP17"])    ##test on air tmp
+##p=0 < 0.05, we can reject the null hypothesis that in 1988 and 2017
+##air tmp have the same mean
+t.test(MR_1988VS2017["WTMP"],MR_1988VS2017["WTMP17"])    ##test on water tmp
+##p=0 > 0.05, we can reject the null hypothesis that in 1988 and 2017
+##water tmp have the same mean
+
+##There are significant changes in the past 30 years
 
 ######################################################################################################################
 
@@ -126,7 +157,8 @@ ui <- dashboardPage(
                      c("Air Temperature" = "Air",
                        "Water Temperature" = "Water")),
         hr(),
-        helpText("Data from  the NOAA National Data Buoy Center.")
+        helpText("Data from  the NOAA National Data Buoy Center."),
+        actionButton("update", "Update View")
         )
       )
     )
@@ -137,7 +169,7 @@ server <- function(input, output) {
   # Reactive expression to generate the requested distribution ----
   # This is called whenever the inputs change. The output functions
   # defined below then use the value computed from this expression
-  d <- reactive({
+  d <- eventReactive(input$update, {
     histdata <- switch(input$type,
                    Air = annaulTemprature[,c("Year","Air Temperature")],
                    Water = annaulTemprature[,c("Year","Water Temperature")],
@@ -145,13 +177,9 @@ server <- function(input, output) {
     histdata <- histdata[input$years[1]-1987:input$years[2]-1987,]
     rownames(histdata) <- histdata[,1]
     histdata <- histdata[,-1]
-  })
+  }, ignoreNULL = FALSE)
   
   output$plot1 <- renderPlot({
-    # histdata <- annaulTemprature[,c("Year",input$type)]
-    # year1 <- as.integer(input$years[1])
-    # year2 <- as.integer(input$years[2])
-    # data <- histdata[year1-1987:year2-1987,2]
     barplot(d(),
             main=input$type,
             ylab="Degrees Celsius",
