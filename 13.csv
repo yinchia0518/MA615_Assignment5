@@ -1,0 +1,22 @@
+PRIORITY;TYPE;SUBTYPE;RISK_ASSESSMENT;VALUES;UNITS;STUDY_TYPE;EXPOSURE_ROUTE;SPECIES;SOURCE;DETAILS
+6;LC50;-;mortality:acute;72;mg/L;static;-;rainbow trout;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;150;mg/L;static;-;guppy;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;6.43;mg/L;flow-through;-;opossum shrimp;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;350;mg/L;static;-;goldfish;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;10.6;mg/L;renewal;-;rainbow trout;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:acute;0.15;g/m2;spray;-;grey field slug;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:acute;1000;ppm;culture medium;-;egyptian cotton leafworm;ECOTOX;ECOTOX Details
+-1;LD100;-;mortality:acute;0.15;g/m2;spray;-;grey field slug;ECOTOX;ECOTOX Details
+-1;LD100;-;mortality:acute;0.15;g/m2;spray;-;longneck fieldslug;ECOTOX;ECOTOX Details
+2;LD50;-;acute;5620;mg/kg;-;-;-;ACToR;WHO Classifications of Pesticide Hazard : LD50 [2550]
+6;LD50;-;acute;8350;mg/kg;oral;-;rat;AcuteTox;AcuteTox Details
+6;LD50;-;acute;5600;mg/kg;oral;-;rat;AcuteTox;AcuteTox Details
+6;LD50;-;acute;3350;mg/kg;oral;-;rat;AcuteTox;AcuteTox Details
+6;LD50;-;mortality:acute;40;mg/L;aquatic - not reported;-;mayfly;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;37;mg/L;aquatic - not reported;-;mayfly;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;8770;mg/kg;oral;-;japanese quail;ECOTOX;ECOTOX Details
+5;LD50;-;ecotox;4.7;mg/L;-;-;rainbow trout;EFSA;EFSA details
+5;LD50;-;acute;6578;mg/kg-day;oral;-;japanese quail;EFSA;EFSA details
+5;LD50;-;acute;5000;mg/kg;oral;-;rat;EFSA;EFSA details
+-2;TD50;-;acute;140.001;mg/kg-day;-;-;-;ACToR;DSSTox Cancer Potency Database Summary : TD50_Mouse_mmol [724]
+-2;TD50;-;acute;140;mg/kg-day;-;-;-;ACToR;DSSTox Cancer Potency Database Summary : TD50_Mouse_mg [724]

@@ -1,0 +1,346 @@
+PRIORITY;TYPE;SUBTYPE;RISK_ASSESSMENT;VALUES;UNITS;STUDY_TYPE;EXPOSURE_ROUTE;SPECIES;SOURCE;DETAILS
+6;LC10;-;mortality:chronic;0.965793;mg/kg;direct;-;earthworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0013;mg/L;static;-;crimson-spotted rainbowfish;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0022;mg/L;static;-;striped bass;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;58.8;ppm;oral;-;diamondback moth;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;1.28;mg/L;environmental, unspecified;-;oblique banded leaf roller;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;92.1;mg/L;environmental, unspecified;-;common cutworm;ECOTOX;ECOTOX Details
+-1;LC50;-;mortality:acute;0.49;ug/eu;environmental, unspecified;-;corn earworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.16;mg/L;environmental, unspecified;-;red scale parasite;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;3.55;mg/L;environmental, unspecified;-;oblique banded leaf roller;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0073;mg/L;static;-;leopard frog;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.001;mg/L;renewal;-;sacromento splittail;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0003;mg/L;renewal;-;water flea;ECOTOX;ECOTOX Details
+-1;LC50;-;mortality:acute;0.49;ug/eu;environmental, unspecified;-;black-spotted lady beetle;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0001;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;84.3;mg/L;environmental, unspecified;-;old world bollworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0002;mg/L;static;-;delta smelt;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;195;ppm;oral;-;diamondback moth;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0006;mg/L;lentic ;-;minnow,carp family;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;5.83;mg/L;environmental, unspecified;-;rough bollworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;40;ppm;environmental, unspecified;-;cabbage looper;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;1.259;mg/L;environmental, unspecified;-;parasitic wasp;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;8.09;ppm;topical, general;-;asian lady beetle;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0001;mg/L;static;-;crimson-spotted rainbowfish;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0126;mg/L;static;-;mayfly;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0003;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0003;mg/L;renewal;-;fathead minnow;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.002;mg/L;static;-;fathead minnow;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0006;mg/L;static;-;fathead minnow;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;1339;mg/L;environmental, unspecified;-;trichogrammid wasp;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0005;mg/L;renewal;-;sacromento splittail;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0008;mg/L;static;-;crimson-spotted rainbowfish;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0167;mg/L;renewal;-;chinook salmon;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;16.98;mg/L;environmental, unspecified;-;diamondback moth;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0112;mg/L;static;-;mayfly;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;12.2;mg/L;environmental, unspecified;-;rough bollworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0014;mg/L;static;-;midge;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;3.5;mg/L;renewal;-;zebra danio;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.01;mg/L;static;-;mayfly;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0003;mg/L;static;-;fathead minnow;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0002;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0;mg/L;static;-;mayfly;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;51.5;mg/L;environmental, unspecified;-;diamondback moth;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;3.96;mg/L;static;-;crimson-spotted rainbowfish;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0017;mg/L;static;-;crimson-spotted rainbowfish;ECOTOX;ECOTOX Details
+-1;LC50;-;mortality:acute;0.1005;ug/eu;environmental, unspecified;-;greenbug;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0004;mg/L;static;-;copepod;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0;mg/L;static;-;mayfly;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0001;mg/L;static;-;midge;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0002;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0;mg/L;renewal;-;amphipod;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0001;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0003;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.71;ppm;dipped or soaked;-;aphid;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;20;ppm;environmental, unspecified;-;cabbage looper;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;25.17;mg/L;environmental, unspecified;-;diamondback moth;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0001;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0002;mg/L;static;-;fathead minnow;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0003;mg/L;static;-;green eyed skimmer;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0003;mg/L;static;-;fathead minnow;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0002;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0001;mg/L;static;-;scud;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0029;mg/L;static;-;crimson-spotted rainbowfish;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0024;mg/L;static;-;crimson-spotted rainbowfish;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;1.96;mg/L;renewal;-;zebra danio;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0002;mg/L;lentic ;-;northern redbelly dace;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0281;mg/L;static;-;crimson-spotted rainbowfish;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0002;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0009;mg/L;lentic ;-;fathead minnow;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0003;mg/L;static;-;fathead minnow;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;19.65;mg/L;spray;-;european corn borer;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0002;mg/L;static;-;mummichog;ECOTOX;ECOTOX Details
+-1;LC50;-;mortality:acute;1.51;ug/eu;environmental, unspecified;-;corn earworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;43;mg/L;immersion;-;budworm;ECOTOX;ECOTOX Details
+-1;LC50;-;mortality:acute;2.3;ug/eu;environmental, unspecified;-;corn earworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0054;mg/L;renewal;-;zebra danio;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.48;mg/L;environmental, unspecified;-;diamondback moth;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0145;mg/L;renewal;-;zebra danio;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0001;mg/L;lentic ;-;crayfish;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;1.14;mg/L;dipped or soaked;-;russian wheat aphid;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+-1;LC50;-;mortality:acute;0.85;ug/eu;environmental, unspecified;-;sevenspotted lady beetle;ECOTOX;ECOTOX Details
+-1;LC50;-;mortality:acute;0.07;ug/eu;environmental, unspecified;-;convergent lady beetle;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0004;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.028;mg/L;aquatic - not reported;-;bog frog;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0001;mg/L;static;-;scud;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.35;ppm;oral;-;oriental fruit moth;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0004;mg/L;static;-;bluegill;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.01;mg/L;renewal;-;zebra danio;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.303;mg/L;environmental, unspecified;-;braconid wasp;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0001;mg/L;flow-through;-;rainbow trout;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;9.13;mg/L;spray;-;european corn borer;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;10;ppm;environmental, unspecified;-;cabbage looper;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0002;mg/L;lentic ;-;bluegill;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;2.99;mg/L;environmental, unspecified;-;rough bollworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0002;mg/L;static;-;fathead minnow;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0002;mg/L;static;-;fathead minnow;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0001;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0;mg/L;static;-;spread winged damselfly;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0005;mg/L;static;-;bluegill;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0004;mg/L;static;-;bluegill;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0062;mg/L;static;-;crimson-spotted rainbowfish;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0001;mg/L;static;-;scud;ECOTOX;ECOTOX Details
+-1;LC50;-;mortality:acute;1.62;ug/eu;environmental, unspecified;-;aphid wasp;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0001;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+-1;LC50;-;mortality:acute;51.3;ug/eu;environmental, unspecified;-;parasitoid wasp;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;695;mg/L;environmental, unspecified;-;parasitic wasp;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.34;ppm;oral;-;oriental fruit moth;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0003;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.599;mg/L;environmental, unspecified;-;chalcid wasp;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.09;ppm;oral;-;diamondback moth;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:chronic;4.57702;mg/kg;direct;-;earthworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;5.09;mg/L;spray;-;european corn borer;ECOTOX;ECOTOX Details
+-1;LC50;-;mortality:acute;355.2;ug/eu;direct;-;two-spotted spider mite;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;15.3;mg/L;environmental, unspecified;-;old world bollworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.01;mg/L;static;-;mayfly;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;20;ppm;environmental, unspecified;-;cabbage looper;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0001;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0002;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+-1;LC50;-;mortality:acute;0.08;ug/eu;environmental, unspecified;-;sinuate lady beetle;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.002;mg/L;static;-;midge;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.2;mg/L;environmental, unspecified;-;speckled cutworm moth;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0002;mg/L;static;-;delta smelt;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0002;mg/L;static;-;midge;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;11.7;mg/L;environmental, unspecified;-;rough bollworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0002;mg/L;static;-;fathead minnow;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0035;mg/L;renewal;-;zebra danio;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.41;ppm;oral;-;oriental fruit moth;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.13;mg/L;environmental, unspecified;-;rough bollworm;ECOTOX;ECOTOX Details
+-1;LC50;-;mortality:acute;0.4;ug/eu;environmental, unspecified;-;corn earworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0004;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+-1;LC50;-;mortality:acute;0.68;ug/eu;environmental, unspecified;-;parasitoid wasp;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.37;ppm;oral;-;oriental fruit moth;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0003;mg/L;static;-;fathead minnow;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;2.41;mg/L;environmental, unspecified;-;rough bollworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0002;mg/L;renewal;-;fathead minnow;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0001;mg/L;static;-;daggerblade grass shrimp;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;12.7;ppm;oral;-;diamondback moth;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0002;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;40.4;mg/L;environmental, unspecified;-;old world bollworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0003;mg/L;static;-;bluegill;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.048;mg/L;static;-;crimson-spotted rainbowfish;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;4894;ppm;oral;-;mallard duck;ECOTOX;ECOTOX Details
+-1;LC50;-;mortality:acute;0.6;ug/eu;direct;-;banks grass mite;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0011;mg/L;static;-;crimson-spotted rainbowfish;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0003;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;20;ppm;environmental, unspecified;-;predatory mite;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0023;mg/L;static;-;crimson-spotted rainbowfish;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0121;mg/L;static;-;mayfly;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0002;mg/L;static;-;fathead minnow;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0025;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0079;mg/L;static;-;mayfly;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0001;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;1.25;mg/kg;topical, general;-;budworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;4.1;mg/L;environmental, unspecified;-;rough bollworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0002;mg/L;static;-;fathead minnow;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0002;mg/L;flow-through;-;bluegill;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;116;mg/L;immersion;-;diamondback moth;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;586;mg/L;immersion;-;budworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;100.41;mg/kg;topical, general;-;budworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0018;mg/L;static;-;crimson-spotted rainbowfish;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;30.53;ppm;topical, general;-;asian lady beetle;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;14;mg/L;environmental, unspecified;-;rough bollworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0001;mg/L;static;-;water flea;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;10.4;mg/L;environmental, unspecified;-;old world bollworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.007;mg/L;environmental, unspecified;-;diamondback moth;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;8.49;mg/L;environmental, unspecified;-;rough bollworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;1331.4;mg/L;environmental, unspecified;-;parasitic wasp;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0004;mg/L;static;-;bluegill;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0334;mg/L;static;-;crimson-spotted rainbowfish;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0009;mg/L;static;-;crimson-spotted rainbowfish;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.89;ppm;dipped or soaked;-;spirea aphid;ECOTOX;ECOTOX Details
+5;LC50;-;ecotox;10.6;mg/kg;-;-;tiger worm;EFSA;EFSA details
+5;LC50;-;ecotox;0.0001;mg/L;-;-;rainbow trout;EFSA;EFSA details
+6;LC90;-;mortality:acute;359;mg/L;environmental, unspecified;-;old world bollworm;ECOTOX;ECOTOX Details
+6;LC90;-;mortality:acute;13.6;mg/L;environmental, unspecified;-;oblique banded leaf roller;ECOTOX;ECOTOX Details
+6;LC90;-;mortality:acute;50.6;mg/L;environmental, unspecified;-;old world bollworm;ECOTOX;ECOTOX Details
+-1;LC90;-;mortality:acute;5.9;ug/eu;environmental, unspecified;-;corn earworm;ECOTOX;ECOTOX Details
+-1;LC90;-;mortality:acute;1.35;ug/eu;environmental, unspecified;-;corn earworm;ECOTOX;ECOTOX Details
+6;LC90;-;mortality:acute;21.8;mg/L;environmental, unspecified;-;rough bollworm;ECOTOX;ECOTOX Details
+-1;LC90;-;mortality:acute;4.59;ug/eu;environmental, unspecified;-;corn earworm;ECOTOX;ECOTOX Details
+6;LC90;-;mortality:acute;285;mg/L;environmental, unspecified;-;old world bollworm;ECOTOX;ECOTOX Details
+6;LC90;-;mortality:acute;81.8;mg/L;environmental, unspecified;-;rough bollworm;ECOTOX;ECOTOX Details
+6;LC90;-;mortality:acute;5.42;mg/L;environmental, unspecified;-;oblique banded leaf roller;ECOTOX;ECOTOX Details
+6;LC90;-;mortality:acute;63.1;mg/L;environmental, unspecified;-;rough bollworm;ECOTOX;ECOTOX Details
+6;LC90;-;mortality:acute;1.45;ppm;oral;-;oriental fruit moth;ECOTOX;ECOTOX Details
+6;LC90;-;mortality:acute;59.3;mg/L;environmental, unspecified;-;rough bollworm;ECOTOX;ECOTOX Details
+6;LC90;-;mortality:acute;1.62;ppm;oral;-;oriental fruit moth;ECOTOX;ECOTOX Details
+6;LC90;-;mortality:acute;1.56;ppm;oral;-;oriental fruit moth;ECOTOX;ECOTOX Details
+-1;LC90;-;mortality:acute;1.45;ug/eu;environmental, unspecified;-;corn earworm;ECOTOX;ECOTOX Details
+6;LC90;-;mortality:acute;1.26;ppm;oral;-;oriental fruit moth;ECOTOX;ECOTOX Details
+6;LC90;-;mortality:acute;13.7;mg/L;environmental, unspecified;-;rough bollworm;ECOTOX;ECOTOX Details
+6;LC90;-;mortality:acute;69.9;mg/L;environmental, unspecified;-;rough bollworm;ECOTOX;ECOTOX Details
+6;LC90;-;mortality:acute;55.1;mg/L;environmental, unspecified;-;old world bollworm;ECOTOX;ECOTOX Details
+6;LC90;-;mortality:acute;0.71;mg/L;environmental, unspecified;-;rough bollworm;ECOTOX;ECOTOX Details
+6;LC90;-;mortality:acute;620;ppm;environmental, unspecified;-;predatory mite;ECOTOX;ECOTOX Details
+6;LC90;-;mortality:acute;26.4;mg/L;environmental, unspecified;-;rough bollworm;ECOTOX;ECOTOX Details
+6;LC90;-;mortality:acute;52.6;mg/L;environmental, unspecified;-;rough bollworm;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:chronic;0.42;ppm;topical, general;-;lacewing;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:acute;0.0001;mg/L;renewal;-;chinook salmon;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:acute;0.0006;mg/L;static;-;striped bass;ECOTOX;ECOTOX Details
+-1;LD0;-;mortality:acute;148;ppm;oral;-;japanese medaka;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:acute;0.0001;mg/L;renewal;-;chinook salmon;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:acute;0.0001;mg/L;renewal;-;chinook salmon;ECOTOX;ECOTOX Details
+-1;LD0;-;mortality:chronic;320;ppm;oral;-;norway rat;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:acute;0.0003;mg/L;static;-;scud;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:acute;0.0001;mg/L;renewal;-;chinook salmon;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:acute;0.00420319;g/m2;environmental, unspecified;-;picnic beetle;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:acute;0.0011;mg/L;static;-;fathead minnow;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:acute;0.1;mg/L;renewal;-;chinook salmon;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:acute;0.0009;mg/L;renewal;-;japanese medaka;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:acute;0.01;mg/L;static;-;leopard frog;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:acute;59.913;mg/L;environmental, unspecified;-;strawberry root weevil;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:acute;0.00420319;g/m2;environmental, unspecified;-;four-spotted sap beetle;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:acute;0.0001;mg/L;aquatic - not reported;-;water flea;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:acute;0;mg/L;static;-;scud;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:acute;0.001;mg/L;renewal;-;chinook salmon;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:acute;0.0001;mg/L;aquatic - not reported;-;water flea;ECOTOX;ECOTOX Details
+-1;LD0;-;mortality:chronic;320;ppm;oral;-;norway rat;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:acute;0;mg/L;static;-;scud;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:acute;0.0005;mg/L;static;-;fathead minnow;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;90;mg/L;environmental, unspecified;-;parasitic wasp;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;0.002;mg/L;static;-;scud;ECOTOX;ECOTOX Details
+-1;LD100;-;mortality:acute;0.00302;g/m2;environmental, unspecified;-;parasitic wasp;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;0.005;mg/L;lentic ;-;bluegill;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;300;ppm;environmental, unspecified;-;two spotted lady beetle;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;1000;mg/L;environmental, unspecified;-;parasitic wasp;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:chronic;4.2;ppm;topical, general;-;ladybird beetle;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;0.0294;mg/L;aquatic - not reported;-;water flea;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;0.005;mg/L;lentic ;-;northern redbelly dace;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;0.0979;mg/L;aquatic - not reported;-;water flea;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;0.001;mg/L;renewal;-;chinook salmon;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;0.0053;mg/L;aquatic - not reported;-;fathead minnow;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;0.0083;mg/L;aquatic - not reported;-;fathead minnow;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;0.002;mg/L;static;-;scud;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;0.0294;mg/L;aquatic - not reported;-;fathead minnow;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;25;ppm;environmental, unspecified;-;parasitic wasp;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;0.0083;mg/L;aquatic - not reported;-;water flea;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:chronic;4.2;ppm;topical, general;-;spotless ladybird beetle;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:chronic;4.2;ppm;topical, general;-;asian lady beetle;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;300;ppm;immersion;-;two spotted lady beetle;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;300;ppm;immersion;-;two spotted lady beetle;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;0.0011;mg/L;aquatic - not reported;-;water flea;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;0.0005;mg/L;renewal;-;water flea;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:chronic;4.2;ppm;topical, general;-;ladybird beetle;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;10;mg/L;static;-;leopard frog;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;2000;ppm;environmental, unspecified;-;elm leaf beetle;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:chronic;0.001;mg/L;lentic ;-;bluegill;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;300;ppm;immersion;-;two spotted lady beetle;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;0.0044;mg/L;static;-;striped bass;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:chronic;0.005;mg/L;lentic ;-;bony fishes;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:chronic;0.0001;mg/L;flow-through;-;bluegill;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;300;ppm;immersion;-;two spotted lady beetle;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;0.001;mg/L;renewal;-;chinook salmon;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;0.0094;mg/L;renewal;-;japanese medaka;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;300;ppm;environmental, unspecified;-;two spotted lady beetle;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;0.0979;mg/L;aquatic - not reported;-;fathead minnow;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;20000;ppm;environmental, unspecified;-;parasitoid wasp;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;300;ppm;immersion;-;two spotted lady beetle;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;0.0053;mg/L;aquatic - not reported;-;water flea;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:chronic;0.0002;mg/L;flow-through;-;bluegill;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;300;ppm;immersion;-;two spotted lady beetle;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;0.005;mg/L;lentic ;-;bluegill;ECOTOX;ECOTOX Details
+6;LD100;-;mortality:acute;0.001;mg/L;renewal;-;chinook salmon;ECOTOX;ECOTOX Details
+4;LD50;-;acute;2500;mg/kg;-;-;-;ACToR;Univ. of Florida Pesticide Toxicity Profiles : Dermal LD50 [1483]
+4;LD50;-;acute;451;mg/kg;-;-;-;ACToR;Univ. of Florida Pesticide Toxicity Profiles : Rat oral LD50 [1483]
+2;LD50;-;acute;87;mg/kg;-;-;-;ACToR;WHO Classifications of Pesticide Hazard : LD50 [2550]
+6;LD50;-;acute;325;mg/kg;oral;-;rat;AcuteTox;AcuteTox Details
+6;LD50;-;acute;88;mg/kg;oral;-;rat;AcuteTox;AcuteTox Details
+6;LD50;-;acute;325;mg/kg;oral;-;rat;AcuteTox;AcuteTox Details
+6;LD50;-;mortality:acute;0.013;mg/kg;topical, general;-;cabbage looper;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.0000008;mg/org;topical, general;-;striped riceborer;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;150;mg/L;topical, general;-;common green lacewing;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;0.00138;g/m2;direct;-;crucifer flea beetle;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.00013;mg/org;topical, general;-;cowpea curculio;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;0.01;mg/kg;topical, general;-;cabbage looper;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;3;mg/L;topical, general;-;ladybird beetle;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;0.0019;g/m2;environmental, unspecified;-;pollen beetle;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;140;mg/L;topical, general;-;common green lacewing;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;0.419;mg/kg;environmental, unspecified;-;budworm;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;381;mg/kg;oral;-;northern bobwhite quail;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;0.1;mg/kg;topical, general;-;diamondback moth;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.00062;mg/org;topical, general;-;old world bollworm;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;4.357;mg/kg;environmental, unspecified;-;budworm;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;180;mg/L;environmental, unspecified;-;ladybird beetle;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;20;mg/L;environmental, unspecified;-;ladybird beetle;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;20;mg/L;environmental, unspecified;-;ladybird beetle;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;210;mg/L;environmental, unspecified;-;common green lacewing;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.00003;mg/org;topical, general;-;old world bollworm;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;0.011;mg/kg;topical, general;-;cabbage looper;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;390;mg/L;environmental, unspecified;-;common green lacewing;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;0.604;mg/kg;topical, general;-;budworm;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;400;mg/L;environmental, unspecified;-;ladybird beetle;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.00064;mg/org;topical, general;-;old world bollworm;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.0003;mg/org;topical, general;-;boll weevil;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.000157;mg/org;topical, general;-;cowpea curculio;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.00014;mg/org;topical, general;-;boll weevil;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.0000078;mg/org;topical, general;-;striped riceborer;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;381;mg/kg;oral;-;northern bobwhite quail;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.00000437;mg/org;topical, general;-;striped riceborer;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.000011;mg/org;topical, general;-;oriental fruit moth;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.00015;mg/org;topical, general;-;boll weevil;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.000046;mg/org;topical, general;-;european corn borer;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.00000247;mg/org;topical, general;-;striped riceborer;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.0000172;mg/org;topical, general;-;honey bee;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.000385;mg/org;topical, general;-;cowpea curculio;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;10;mg/L;topical, general;-;ladybird beetle;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.00009;mg/org;topical, general;-;boll weevil;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;0.0051;g/m2;environmental, unspecified;-;pollen beetle;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;70;mg/L;topical, general;-;ladybird beetle;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.00000111;mg/org;topical, general;-;striped riceborer;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.00011;mg/org;topical, general;-;cowpea curculio;ECOTOX;ECOTOX Details
+6;LD50;-;mortality:acute;44.9;mg/kg;topical, general;-;diamondback moth;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.00002;mg/org;topical, general;-;old world bollworm;ECOTOX;ECOTOX Details
+5;LD50;-;acute;1312;mg/kg-day;-;-;bobwhite quail;EFSA;EFSA details
+5;LD50;-;acute;88.5;mg/kg;oral;-;rat;EFSA;EFSA details
+-1;LD50;-;ecotox;0.06;ug/piece;-;-;honey bee;EFSA;EFSA details
+-1;LD90;-;mortality:acute;0.000015;mg/org;topical, general;-;oriental fruit moth;ECOTOX;ECOTOX Details
+6;LD90;-;mortality:acute;60;mg/L;topical, general;-;ladybird beetle;ECOTOX;ECOTOX Details
+6;LD90;-;mortality:acute;2590;mg/L;environmental, unspecified;-;common green lacewing;ECOTOX;ECOTOX Details
+6;LD90;-;mortality:acute;3710;mg/L;topical, general;-;common green lacewing;ECOTOX;ECOTOX Details
+6;LD90;-;mortality:acute;2.417;mg/kg;environmental, unspecified;-;budworm;ECOTOX;ECOTOX Details
+6;LD90;-;mortality:acute;1710;mg/L;environmental, unspecified;-;ladybird beetle;ECOTOX;ECOTOX Details
+6;LD90;-;mortality:acute;30;mg/L;environmental, unspecified;-;ladybird beetle;ECOTOX;ECOTOX Details
+-1;LD90;-;mortality:acute;0.000348;mg/org;topical, general;-;cowpea curculio;ECOTOX;ECOTOX Details
+6;LD90;-;mortality:acute;25.857;mg/kg;environmental, unspecified;-;budworm;ECOTOX;ECOTOX Details
+6;LD90;-;mortality:acute;0.032;mg/kg;topical, general;-;cabbage looper;ECOTOX;ECOTOX Details
+6;LD90;-;mortality:acute;470;mg/L;environmental, unspecified;-;ladybird beetle;ECOTOX;ECOTOX Details
+6;LD90;-;mortality:acute;30;mg/L;environmental, unspecified;-;ladybird beetle;ECOTOX;ECOTOX Details
+6;LD90;-;mortality:acute;0.025;mg/kg;topical, general;-;cabbage looper;ECOTOX;ECOTOX Details
+-1;LD90;-;mortality:acute;0.000578;mg/org;topical, general;-;cowpea curculio;ECOTOX;ECOTOX Details
+6;LD90;-;mortality:acute;0.025;mg/kg;topical, general;-;cabbage looper;ECOTOX;ECOTOX Details
+6;LD90;-;mortality:acute;153370;mg/L;environmental, unspecified;-;common green lacewing;ECOTOX;ECOTOX Details
+6;LD90;-;mortality:acute;190;mg/L;topical, general;-;ladybird beetle;ECOTOX;ECOTOX Details
+6;LD90;-;mortality:acute;2180;mg/L;topical, general;-;ladybird beetle;ECOTOX;ECOTOX Details
+6;LD90;-;mortality:acute;650;mg/L;topical, general;-;common green lacewing;ECOTOX;ECOTOX Details
+-1;LD90;-;mortality:acute;0.000619;mg/org;topical, general;-;european corn borer;ECOTOX;ECOTOX Details
+-1;LD90;-;mortality:acute;0.000196;mg/org;topical, general;-;cowpea curculio;ECOTOX;ECOTOX Details
+-1;LD90;-;mortality:acute;0.00247;mg/org;topical, general;-;cowpea curculio;ECOTOX;ECOTOX Details
+6;LD95;-;mortality:acute;0.00444;g/m2;direct;-;crucifer flea beetle;ECOTOX;ECOTOX Details
+6;LD95;-;mortality:acute;0.2;mg/kg;intracranial ;-;house mouse;ECOTOX;ECOTOX Details
+6;LD95;-;mortality:acute;0.2;mg/kg;topical, general;-;american cockroach;ECOTOX;ECOTOX Details
+-1;LD99;-;mortality:acute;0.000022;mg/org;topical, general;-;oriental fruit moth;ECOTOX;ECOTOX Details

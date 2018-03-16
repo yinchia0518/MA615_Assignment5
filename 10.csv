@@ -1,0 +1,35 @@
+PRIORITY;TYPE;SUBTYPE;RISK_ASSESSMENT;VALUES;UNITS;STUDY_TYPE;EXPOSURE_ROUTE;SPECIES;SOURCE;DETAILS
+6;LC50;-;mortality:acute;0.74;ppm;environmental, unspecified;-;common cutworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;68.41;ppm;environmental, unspecified;-;common cutworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0116;mg/L;static;-;mayfly;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:chronic;1.953;mg/L;environmental, unspecified;-;parasitic wasp;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;9.45;ppm;environmental, unspecified;-;common cutworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0351;mg/L;static;-;scud;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;60.86;ppm;environmental, unspecified;-;common cutworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;39.78;ppm;oral;-;braconid wasp;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0117;mg/L;static;-;caddisfly;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.76;ppm;environmental, unspecified;-;common cutworm;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;0.0859;mg/L;static;-;midge;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;55.51;ppm;oral;-;braconid wasp;ECOTOX;ECOTOX Details
+6;LC50;-;mortality:acute;1.15;mg/L;-;-;opossum shrimp;ECOTOX;ECOTOX Details
+5;LC50;-;ecotox;12;mg/L;-;-;sheepshead minnow;EFSA;EFSA details
+5;LC50;-;ecotox;1000;mg/kg;-;-;tiger worm;EFSA;EFSA details
+5;LC50;-;acute;1729;mg/kg-day;oral;-;bobwhite quail;EFSA;EFSA details
+6;LC95;-;mortality:chronic;22.6864;mg/L;environmental, unspecified;-;parasitic wasp;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:acute;0.023;g/m2;oral;-;ground beetle;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:acute;50;mg/L;static;-;salmon louse;ECOTOX;ECOTOX Details
+6;LD0;-;mortality:acute;10;mg/L;topical, general;-;bumblebee;ECOTOX;ECOTOX Details
+6;LD50;-;acute;5000;mg/kg;oral;-;rat;AcuteTox;AcuteTox Details
+-1;LD50;-;mortality:acute;0.000002;mg/org;dermal;-;striped riceborer;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.00000427;mg/org;dermal;-;striped riceborer;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.00000755;mg/org;dermal;-;striped riceborer;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.00001108;mg/org;dermal;-;striped riceborer;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.0000187;mg/org;dermal;-;striped riceborer;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.00000526;mg/org;dermal;-;striped riceborer;ECOTOX;ECOTOX Details
+-1;LD50;-;mortality:acute;0.00001403;mg/org;dermal;-;striped riceborer;ECOTOX;ECOTOX Details
+5;LD50;-;acute;2250;mg/kg-day;-;-;bobwhite quail;EFSA;EFSA details
+-1;LD50;-;ecotox;4;ug/piece;-;-;honey bee;EFSA;EFSA details
+5;LD50;-;acute;5000;mg/kg-day;oral;-;rat;EFSA;EFSA details
+-1;LD50;-;ecotox;104.1;ug/piece;oral;-;honey bee;EFSA;EFSA details
+5;LD50;-;acute;2000;mg/kg-day;oral;-;rat;EFSA;EFSA details
+5;LD50;-;acute;2000;mg/kg-day;oral;-;mouse;EFSA;EFSA details
