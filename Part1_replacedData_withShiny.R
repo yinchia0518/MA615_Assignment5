@@ -142,26 +142,43 @@ library(shiny)
 
 ui <- dashboardPage(
   dashboardHeader(title = "Temperature Dashboard"),
-  dashboardSidebar(),
+  dashboardSidebar(
+    sliderInput("years", "Year Range:", 1988, 2017, c(1995,2010)),
+    radioButtons("type", "Substance Type:",
+                 c("Air Temperature" = "Air",
+                   "Water Temperature" = "Water")),
+    hr(),
+    helpText("Data from  the NOAA National Data Buoy Center."),
+    actionButton("update", "Update View")
+  ),
   
   dashboardBody(
     # Boxes need to be put in a row (or column)
     fluidRow(
-      box(plotOutput("plot1")),
-    
-      #control years
-      box(
-        title = "Controls",
-        sliderInput("years", "Year Range:", 1988, 2017, c(1995,2010)),
-        radioButtons("type", "Substance Type:",
-                     c("Air Temperature" = "Air",
-                       "Water Temperature" = "Water")),
-        hr(),
-        helpText("Data from  the NOAA National Data Buoy Center."),
-        actionButton("update", "Update View")
-        )
-      )
+      box(h4("Summary"),
+          verbatimTextOutput("summary"),
+          # Include clarifying text ----
+          helpText("Note: while the data view will show only the specified",
+                   "number of observations, the summary will still be based",
+                   "on the full dataset."))
+      ),
+    fluidRow(
+      #control years and dataset
+      # box(
+      #   title = "Controls",
+      #   sliderInput("years", "Year Range:", 1988, 2017, c(1995,2010)),
+      #   radioButtons("type", "Substance Type:",
+      #                c("Air Temperature" = "Air",
+      #                  "Water Temperature" = "Water")),
+      #   hr(),
+      #   helpText("Data from  the NOAA National Data Buoy Center."),
+      #   actionButton("update", "Update View")
+      # ),
+      box(h4("Bar Plot"),
+          width = 8
+          plotOutput("plot1"))
     )
+  )
 )
 
 
@@ -174,14 +191,20 @@ server <- function(input, output) {
                    Air = annaulTemprature[,c("Year","Air Temperature")],
                    Water = annaulTemprature[,c("Year","Water Temperature")],
                    annaulTemprature[,1:2])
-    histdata <- histdata[input$years[1]-1987:input$years[2]-1987,]
     rownames(histdata) <- histdata[,1]
+    histdata <- histdata[as.character(c(input$years[1]:input$years[2])),]
     histdata <- histdata[,-1]
   }, ignoreNULL = FALSE)
   
+  # Generate a summary of the dataset ----
+  output$summary <- renderPrint({
+    dataset <- annaulTemprature
+    summary(dataset)
+  })
+  
   output$plot1 <- renderPlot({
     barplot(d(),
-            main=input$type,
+            main=paste(input$type,"Temperature",sep=" "),
             ylab="Degrees Celsius",
             xlab="Year")
   })
