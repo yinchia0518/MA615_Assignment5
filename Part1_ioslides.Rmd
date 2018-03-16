@@ -1,7 +1,41 @@
-## station 46035 has missing data in 2012 and 2013
-## we replaced the data of these two years with nearby buoy(46070)
+---
+title: "Assignment5_Part1"
+output:
+  ioslides_presentation: default
+  beamer_presentation: default
+fontsize: 10pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(ggplot2)
+```
+
+## Team members|Group 6
+
+- Yue Wu 
+- YinChia Huang 
+- Francesco Ignazio Re
+
+## Outline
+
+- Introduction
+- A time series composed of 30 years of daily
+- Statistic Analysis
+- Time Series & Analysis
+- Conclusion
+
+## Introduction
+The purpose of this project is for us to exercise, extend, and demonstrate our abilities to use the ideas and tools of the Tidyverse. We are assigned data from NOAA Weather Station buoy 46035 at 57.026 N 177.738 W in the NOAA National
+Data Buoy Center. Our goal is to obtain data, clean, organize, and explore it. 
+We only focused on Air Temperature and Sea Temperature from 1988 to 2017. However, data of 2012 and 2013 are missing, which we replaced by the data of  nearby buoy 46070, assuming their temperatures should be pretty close.
+
+```{r include=FALSE}
 library(tidyverse)
 library(stringr)
+library("reshape2")
+library("ggplot2")
+
 
 url1 <- "http://www.ndbc.noaa.gov/view_text_file.php?filename=46035h"
 url2 <- "http://www.ndbc.noaa.gov/view_text_file.php?filename=46070h"
@@ -31,15 +65,12 @@ while (i <= N){
   if(i>=1 && i<=11){
     file$YYYY<-paste("19", file$YYYY, sep = "")
   }
-  #print(file)
   #only select time, air temp and water temp
   file <- subset(file, select=c("YYYY", "MM","DD","hh","ATMP","WTMP"))
   file$ATMP<-as.numeric(file$ATMP)
   file$WTMP<-as.numeric(file$WTMP)
-  file <- subset(file, ATMP!= 999.0 &ATMP!= 99.0)
-  file <- subset(file, WTMP!= 999.0 &WTMP!= 99.0)
-  # file <- file[-outliersIndex(file$ATMP),]
-  # file <- file[-outliersIndex(file$WTMP),]
+  file <- subset(file, ATMP!= 999.0 & ATMP!= 99.0)
+  file <- subset(file, WTMP!= 999.0 & WTMP!= 99.0)
   annualMean_AT <- mean(file$ATMP, na.rm=TRUE)
   annualMean_WT <- mean(file$WTMP, na.rm=TRUE)
   
@@ -55,48 +86,26 @@ while (i <= N){
     annualMeans_AT <- rbind.data.frame(annualMeans_AT, annualMean_AT)
     annualMeans_WT <- rbind.data.frame(annualMeans_WT, annualMean_WT)
   }
-  #print(MR)
   i<-i+1
 }
-  
-
-#combine all dates and times into one column for creating time series graph
 MR$FullTime <-strptime(with(MR, paste(YYYY, MM, DD, hh, sep="-")), format="%Y-%m-%d-%H")
-MR$FullTime
 MR_DailyNoon$FullTime <-strptime(with(MR_DailyNoon, paste(YYYY, MM, DD, hh, sep="-")), format="%Y-%m-%d-%H")
-MR_DailyNoon$FullTime
 
-# #only select daily noon data 
-# MR_DailyNoon <- subset(MR, hh==12)
+```
 
-library("reshape2")
-library("ggplot2")
 
+##A time series composed of 30 years of daily
+```{r echo=FALSE}
 ggplot(MR_DailyNoon, aes(x = FullTime)) + 
-  geom_line(aes(y = ATMP), colour="blue", size = 0.5) + 
-  geom_line(aes(y = WTMP), colour = "grey", size = 0.5) +
-  ylab(label="Celsius degrees") + 
-  xlab("Time")
+  geom_line(aes(y = ATMP, colour ="Air Temperature")) + 
+  geom_line(aes(y = WTMP, colour = "Water Temperature")) +
+  scale_colour_manual("", 
+                      breaks = c("Air Temperature", "Water Temperature"),
+                      values = c("pink", "blue"))+
+  xlab("Time") +
+  scale_y_continuous("Temperatura (C)", limits = c(0,10)) + 
+  labs(title="A time series composed of 30 years of daily")
+  
+```
 
-
-# outliersIndex <- function(data) {
-#   q1 <- quantile(data)[2]
-#   q3 <- quantile(data)[4]
-#   iqr <- IQR(data)
-#   
-#   threshold.upper = (iqr * 3) + q3
-#   threshold.lower = q1 - (iqr * 3)
-#   index <- which(data > threshold.upper | data < threshold.lower) #retrun positions that are TRUE in the vector
-#   return(index) 
-# }
-
-#create annual temprature table, which containing means of temperatures in each year
-annualTemprature <- data.frame(c(1988:2017), annualMeans_AT, annualMeans_WT)
-colnames(annualTemprature) <- c("Year", "Air Temperature", "Water Temperature")
-
-
-ggplot(annualTemprature, aes(x = Year)) + 
-  geom_line(aes(y = annualMeans_AT), colour="blue", size = 0.5) + 
-  geom_line(aes(y = annualMeans_WT), colour = "red", size = 0.5) +
-  ylab(label="Celsius degrees") + 
-  xlab("Time")
+ 
