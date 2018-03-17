@@ -11,19 +11,15 @@ knitr::opts_chunk$set(echo = FALSE)
 library(ggplot2)
 ```
 
-## Team members|Group 6
-
+## Team members
 - Yue Wu 
 - YinChia Huang 
 - Francesco Ignazio Re
 
 ## Outline
-
 - Introduction
-- A time series composed of 30 years of daily
+- Data visualization
 - Statistic Analysis
-- Time Series & Analysis
-- Conclusion
 
 ## Introduction
 The purpose of this project is for us to exercise, extend, and demonstrate our abilities to use the ideas and tools of the Tidyverse. We are assigned data from NOAA Weather Station buoy 46035 at 57.026 N 177.738 W in the NOAA National
@@ -94,7 +90,7 @@ MR_DailyNoon$FullTime <-strptime(with(MR_DailyNoon, paste(YYYY, MM, DD, hh, sep=
 ```
 
 
-##A time series composed of 30 years of daily
+## Data visualization
 ```{r echo=FALSE}
 ggplot(MR_DailyNoon, aes(x = FullTime)) + 
   geom_line(aes(y = ATMP, colour ="Air Temperature")) + 
@@ -104,8 +100,153 @@ ggplot(MR_DailyNoon, aes(x = FullTime)) +
                       values = c("pink", "blue"))+
   xlab("Time") +
   scale_y_continuous("Temperatura (C)", limits = c(0,10)) + 
-  labs(title="A time series composed of 30 years of daily")
+  labs(title="A time series composed of 30 years of daily Air Temperature
+and Sea Temperature readings recorded at noon")
   
 ```
 
- 
+## Has the mean temperature changed over the past 30 years?
+```{r echo=FALSE}
+#create annual temprature table, which containing means of temperatures in each year
+annualTemprature <- data.frame(c(1988:2017), annualMeans_AT, annualMeans_WT)
+colnames(annualTemprature) <- c("Year", "Air Temperature", "Water Temperature")
+
+ggplot(annualTemprature, aes(x = Year)) + 
+  geom_line(aes(y = annualMeans_AT , colour="Air Temperature")) + 
+  geom_line(aes(y = annualMeans_WT , colour = "Water Temperature")) +
+   scale_colour_manual("", 
+                      breaks = c("Air Temperature", "Water Temperature"),
+                      values = c("pink", "blue"))+
+  ylab(label="Celsius degrees") + 
+  xlab("Time")+
+  labs(title="Time series composed from 1988 to 2017 recording annual mean of Air Temperature
+and Sea Temperature")
+```
+
+## Statistical Test- Air temperature :1988_noon V.S 2017_noon 
+```{r include=FALSE}
+MR_1988_DailyNoon <- subset(MR_DailyNoon, YYYY==1988)[,c(2:6)]  
+MR_2017_DailyNoon <- subset(MR_DailyNoon, YYYY==2017)[,c(2:6)]
+colnames(MR_1988_DailyNoon) <- c("MM","DD","hh","ATMP1988","WTMP1988")
+colnames(MR_2017_DailyNoon) <- c("MM","DD","hh","ATMP2017","WTMP2017")
+
+#combine 1988 and 2017 into one table
+MR_1988VS2017_DailyNoon <- as.data.frame(left_join(MR_1988_DailyNoon,MR_2017_DailyNoon))
+```
+
+```{r echo=FALSE}
+#t test on air tmp
+t.test(MR_1988VS2017_DailyNoon["ATMP1988"],MR_1988VS2017_DailyNoon["ATMP2017"])    
+```
+p=0 < 0.05, we can reject the null hypothesis that daily Air Temperature recorded at noonin in 1988 and 2017 have the same mean
+
+
+## Statistical Test - Water temperature :1988_noon V.S 2017_noon
+```{r}
+#t test on water tmp
+t.test(MR_1988VS2017_DailyNoon["WTMP1988"],MR_1988VS2017_DailyNoon["WTMP2017"]) 
+```
+p=0 < 0.05, we can reject the null hypothesis that daily Water Temperature recorded at noonin in 1988 and 2017 have the same mean
+
+## Conclusion : There are significant changes in the past 30 years
+
+
+## Since we only use one sample per day day out of 24 daily hourly temperature readings. Has your sampling affected your evaluation of temperature change? In what way? Explain and demonstrate
+
+## Statistical Test - air temperature
+Method 1:  Test the difference based on choice of time of the day
+Ramdonly chose 20:00 to test
+```{r include=FALSE}
+MR_Daily20 <- subset(MR, hh==20)[,-c(4,7)]
+colnames(MR_Daily20) <- c("YYYY","MM","DD","ATMP20","WTMP20")
+colnames(MR_DailyNoon) <- c("YYYY","MM","DD","hh","ATMP12","WTMP12","Full Time")
+MR_NoonVS20 <- as.data.frame(left_join(MR_DailyNoon[,-c(4,7)],MR_Daily20))
+```
+
+
+```{r echo=FALSE}
+#test on air tmp
+t.test(MR_NoonVS20["ATMP12"],MR_NoonVS20["ATMP20"])   
+```
+p=0.3262 > 0.05, we cannot reject the null hypothesis that daily noon and 20:00 air tmp have the same mean
+
+## Statistical Test - water temperature
+
+```{r echo=FALSE}
+#test on water tmp
+t.test(MR_NoonVS20["WTMP12"],MR_NoonVS20["WTMP20"])
+```
+p=0.7733 > 0.05, we cannot reject the null hypothesis that daily noon and 20:00 water tmp have the same mean
+
+## Statistical Test 
+Method 2:  Prove that choice of the hour won't effect the test result 
+```{r}
+#Demonstration:
+MR_Daily00 <- subset(MR, hh=="00")[,-c(4,7)]
+colnames(MR_Daily00) <- c("YYYY","MM","DD","ATMP00","WTMP00")
+MR_Daily02 <- subset(MR, hh=="02")[,-c(4,7)]
+colnames(MR_Daily02) <- c("YYYY","MM","DD","ATMP02","WTMP02")
+MR_Daily04 <- subset(MR, hh=="04")[,-c(4,7)]
+colnames(MR_Daily04) <- c("YYYY","MM","DD","ATMP04","WTMP04")
+MR_Daily06 <- subset(MR, hh=="06")[,-c(4,7)]
+colnames(MR_Daily06) <- c("YYYY","MM","DD","ATMP06","WTMP06")
+MR_Daily08 <- subset(MR, hh=="08")[,-c(4,7)]
+colnames(MR_Daily08) <- c("YYYY","MM","DD","ATMP08","WTMP08")
+MR_Daily10 <- subset(MR, hh==10)[,-c(4,7)]
+colnames(MR_Daily10) <- c("YYYY","MM","DD","ATMP10","WTMP10")
+MR_Daily14 <- subset(MR, hh==14)[,-c(4,7)]
+colnames(MR_Daily14) <- c("YYYY","MM","DD","ATMP14","WTMP14")
+MR_Daily16 <- subset(MR, hh==16)[,-c(4,7)]
+colnames(MR_Daily16) <- c("YYYY","MM","DD","ATMP16","WTMP16")
+MR_Daily18 <- subset(MR, hh==18)[,-c(4,7)]
+colnames(MR_Daily18) <- c("YYYY","MM","DD","ATMP18","WTMP18")
+MR_Daily22 <- subset(MR, hh==22)[,-c(4,7)]
+colnames(MR_Daily22) <- c("YYYY","MM","DD","ATMP22","WTMP22")
+MR_every2hrs <- left_join(MR_Daily00,MR_Daily02) %>%
+                left_join(.,MR_Daily04) %>%
+                left_join(.,MR_Daily06) %>%
+                left_join(.,MR_Daily08) %>%
+                left_join(.,MR_Daily10) %>%
+                left_join(.,MR_DailyNoon[,-c(4,7)]) %>%
+                left_join(.,MR_Daily14) %>%
+                left_join(.,MR_Daily16) %>%
+                left_join(.,MR_Daily18) %>%
+                left_join(.,MR_Daily20) %>%
+                left_join(.,MR_Daily22)
+MR_every2hrs <- as.data.frame(MR_every2hrs)
+
+```
+
+```{r}
+summary(MR_every2hrs[,-c(1:3)])
+```
+
+## Statistical Test- air temperature
+Method 3. Test the difference if we use all daily data, instead of specific hours per day
+```{r include=FALSE}
+MR_1988 <- subset(MR, YYYY==1988)[,c(2:6)]  
+MR_2017 <- subset(MR, YYYY==2017)[,c(2:6)]
+colnames(MR_1988) <- c("MM","DD","hh","ATMP1988","WTMP1988")
+colnames(MR_2017) <- c("MM","DD","hh","ATMP2017","WTMP2017")
+
+#combine 1988 and 2017 into one table
+MR_1988VS2017 <- as.data.frame(left_join(MR_1988,MR_2017))
+```
+
+```{r}
+#t test on air tmp
+t.test(MR_1988VS2017["ATMP1988"],MR_1988VS2017["ATMP2017"])    
+```
+p=0 < 0.05, we can reject the null hypothesis that Air Temperature in 1988 and 2017 have the same mean
+
+## Statistical Test- water temperature
+```{r}
+#t test on water tmp
+t.test(MR_1988VS2017["WTMP1988"],MR_1988VS2017["WTMP2017"])    
+```
+p=0 < 0.05, we can reject the null hypothesis that Water Temperature in 1988 and 2017 have the same mean
+
+## Conclusion: 
+(1)ATMP at different times of a day have similar distribution
+(2)WTMP at different times of a day have similar distribution
+(3)Choice of the hour during a day does not make a difference
