@@ -100,13 +100,18 @@
 
 <ul>
 <li>Introduction</li>
+<li>Data cleaning</li>
 <li>Data visualization</li>
 <li>Statistic Analysis</li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Introduction</h2></hgroup><article  id="introduction">
 
-<p>The purpose of this project is for us to exercise, extend, and demonstrate our abilities to use the ideas and tools of the Tidyverse. We are assigned data from NOAA Weather Station buoy 46035 at 57.026 N 177.738 W in the NOAA National Data Buoy Center. Our goal is to obtain data, clean, organize, and explore it. We only focused on Air Temperature and Sea Temperature from 1988 to 2017. However, data of 2012 and 2013 are missing, which we replaced by the data of nearby buoy 46070, assuming their temperatures should be pretty close.</p>
+<p>The purpose of this project is for us to exercise, extend, and demonstrate our abilities to use the ideas and tools of the Tidyverse. We are assigned data from NOAA Weather Station buoy 46035 at 57.026 N 177.738 W in the NOAA National Data Buoy Center. Our goal is to obtain data, clean, organize, and explore it.</p>
+
+</article></slide><slide class=""><hgroup><h2>Data cleaning</h2></hgroup><article  id="data-cleaning">
+
+<p>We only focused on Air Temperature and Sea Temperature from 1988 to 2017. However, data of 2012 and 2013 are missing, which we replaced by the data of nearby buoy 46070, assuming their temperatures should be pretty close. In addition to 2012 and 2013, there are a few missing values in other years. Every missing data has value 99.0 or 999.0. As a result, we deleted them, otherwise they would be regarded as outliers.</p>
 
 </article></slide><slide class=""><hgroup><h2>Data visualization</h2></hgroup><article  id="data-visualization">
 
