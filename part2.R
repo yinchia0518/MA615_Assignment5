@@ -1,10 +1,16 @@
+
 library(tidyverse)
 library(readxl)
 library(stringr)
-library(ggplot2)
 library(munsell)
+library(ggplot2)
 
-devtools::install_github()
+
+
+
+
+
+
 veg.1 <- read_xlsx("veg1.xlsx")
 
 
@@ -28,19 +34,19 @@ veg.3 <- dplyr::rename(veg.2,
 
 
 
-#let's separate Quant into Type and Name
-
+#let's separate Category into Label and Quant
 
 ex1 <- separate(veg.3,Category,into = c("Label", "Quant"), sep=",")
 
-utils::View(ex1)
 #let's separate Quant into Type and Name
+
 ex2 <- separate(ex1, Quant, into=c("Type","Name"), sep = ":")
 
 ex3 <- select(ex2, -Domain)
 
-ex4 <- ex3 %>% separate(Label, into = c("Label","Type1"), sep=":")
+#Let's separate and tidy up the fertilizer's names.
 
+ex4 <- ex3 %>% separate(Label, into = c("Label","Type1"), sep=":")
 
 ex4$Name <- with(ex4,ifelse(is.na(Type),Type1,Name))
 
@@ -48,76 +54,47 @@ ex4 <- select(ex4, -Type1)
 
 
 
-
-
-utils::View(ex4)
-
-#LET'S TIDY UP A BIT THE DATA COLUMN
+#Let's focus now on tidying up the "Data" column
+#The data column gives info on the kind of measurement
+#that took place for a given observation
 
 ex5 <- ex4 %>% separate(Data, into = c("name", "Measurement"), sep = "-")
 
 ex6 <- ex5 %>% separate(Measurement, into = c("Measurement", "Info on Measurement", "Stats"), sep = ",")
 
-utils::View(ex7.2)
+#We now can discern the observation based on the measurement and its unit
+
+#Let's rename the column Name:
+#this column is equal to commodity for some observations, but not for all, so we shouldn't drop it
+#as it may add some useful information
+#ex7[,"Info on Commodity"] %>% unique()
 
 ex7 <- ex6 %>% rename("Info on Commodity"=name)
 
-ex7.1 <- ex7 %>% separate(Geo, into= c("Geo", "MultiState")) 
+ex7.1 <- ex7 %>% mutate(Geo = replace(Geo, Geo =="REGION : MULTI-STATE", "MULTI-STATE"))
 
-##??!??!?!?!?!?!?!
+#Let's split the "Name" column into Name and ID and delete the brackets
 
-ex7.2 <- ex7.1 %>%  mutate(Geo == replace(Geo, Geo == "REGION", "MULTI-STATE")) %>%
-  select(-MultiState)
-
-
-utils::View(ex7.2)
-
-#Let's split the "Name" column into Name and ID
-
-
-ex8 <- ex7 %>% separate(Name, into = c("Name", "ID"), sep = "=") %>% 
+ex8 <- ex7.1 %>% separate(Name, into = c("Name", "ID"), sep = "=") %>% 
   separate(Name, into = c("Delete", "Name"), sep = "[()]") %>%
   separate(ID, into = c("ID", "Delete1"), sep = "[)]") %>%
   select(-Delete, -Delete1)
 
-
-
-ex9[,"Name"] %>% unique() %>% print(n=1000)
-
-#DATA EXPLORATION
+#Finally, let's replace the values in Value such as (D),(Z) and (NA) with NA
 
 ex9 <- ex8%>% filter(!Value %in% c("(D)", "(Z)", "(NA)", NA)) %>%
   filter(!Name %in% c("TOTAL")) %>%
   filter(Stats %in% NA) %>%
   select(-Stats)
 
-
-
-View(ex9)
-
-
-
-View(ex11)
-
-
-
-unique(ex9[,"Value"]) %>% print(n = 300)
-
-
-unique(ex5[,"name"])
-
-unique(ex5[,"Commodity"])
-
-View(unique(ex4[,"Data"]))
-
-
+#Let's now focus our Analysis on the observation that involved the use of Restricted Chemicals
 
 ex11 <- ex9 %>% filter(Label == "RESTRICTED USE CHEMICAL")
-View(ex11 %>% select(Name, ID)%>% unique())
+
+
 #Analysis on Restricted Chemicals on Broccoli on Average
 
 Br1 <- ex9 %>% filter(Commodity == "BROCCOLI", `Info on Measurement`==" MEASURED IN LB" , Label == "RESTRICTED USE CHEMICAL") 
-View(Br1)
 Br1$Value <- as.numeric(Br1$Value)
 Br1$Year <- as.numeric(Br1$Year)
 Br1$Year <- as.factor(Br1$Year)
@@ -137,35 +114,28 @@ ggplot(graph, mapping=aes(x= Name, y=`mean(Value)` )) +
 
 cl <- mnsl(c("5R 2/4", "5R 7/10"))
 
+#The graph below presents different widths accoring to the number of years where each chemical appears
+#ggplot(Br1, aes( x=Name, y= Value, fill=Year))+
+#  geom_bar( position = "dodge",stat="identity") + coord_flip() +  scale_fill_manual(values = c("yellow","orange", "red", "brown")) 
+
+
+library(devtools)
+
+dev_mode(on=T)
+
+install_github("hadley/ggplot2",force = TRUE)
+
 ggplot(Br1, aes( x=Name, y= Value, fill=Year))+
-  geom_bar( position = "dodge",stat="identity") + coord_flip() +  scale_fill_manual(values = c("yellow","orange", "red", "brown")) 
-
-
-ggplot(Br1, aes( x=Name, y= Value, fill=Year))+
-  geom_bar( position=position_dodge(preserve="single"),stat="identity")
-
-#This above doesn't run, to ask professor.
-
-#https://github.com/tidyverse/ggplot2/blob/master/R/position-dodge.r
-#http://ggplot2.tidyverse.org/reference/position_dodge.html#examples
-
-View(Br1)
-unique(Br1[,"Year"])
+  geom_bar( position=position_dodge(preserve="single"),stat="identity") +
+  coord_flip() +  scale_fill_manual(values = c("yellow","orange", "red", "brown")) 
 
 
 
+#Analysis on Restricted Chemicals on Cauliflower on Average
 
-
-
-
-Cal1 <- ex10 %>% filter(Commodity == "CAULIFLOWER", `Info on Measurement`==" MEASURED IN LB" , Label == "RESTRICTED USE CHEMICAL") 
-View(Cal1)
-
-count(Cal1)
+Cal1 <- ex9 %>% filter(Commodity == "CAULIFLOWER", `Info on Measurement`==" MEASURED IN LB" , Label == "RESTRICTED USE CHEMICAL") 
 
 Cal1$Value <- as.numeric(Cal1$Value)
-
-View(Cal1)
 Cal1$Year <- as.numeric(Cal1$Year)
 Cal1$Year <- as.factor(Cal1$Year)
 
@@ -178,29 +148,34 @@ ggplot(graph, mapping=aes(x= Name, y=`mean(Value)` )) +
   coord_flip() +
   labs(y = "Values (LB) ", title = "Average values of restricted chemicals in calliflowers ")
 
+#plot with normal version of ggplot2
+#ggplot(Cal1, aes( x=Name, y= Value, fill=Year))+
+#  geom_bar( position = "dodge",stat="identity") + coord_flip() +  scale_fill_manual(values = c("yellow","orange", "red", "brown")) 
 
+#plot with development version of ggplot2
 ggplot(Cal1, aes( x=Name, y= Value, fill=Year))+
-  geom_bar( position = "dodge",stat="identity") + coord_flip() +  scale_fill_manual(values = c("yellow","orange", "red", "brown")) 
+  geom_bar( position=position_dodge(preserve="single"),stat="identity") +
+  coord_flip() +  scale_fill_manual(values = c("yellow","orange", "red", "brown"))
 
-Sprouts <- ex10 %>% filter(`Info on Measurement`==" MEASURED IN LB" , Label == "RESTRICTED USE CHEMICAL") 
 
-utils::View(Sprouts)
+Sprouts <- ex9 %>% filter(`Info on Measurement`==" MEASURED IN LB" , Label == "RESTRICTED USE CHEMICAL") 
+#No restricted chemicals
+Sprouts
 
-Cal1
+
 
 
 #Total Average Between Broccoli and Calliflowers
 
-BrCal <- ex10 %>% filter(Commodity == "CAULIFLOWER" || Commodity == "BROCCOLI",`Info on Measurement`==" MEASURED IN LB" , Label == "RESTRICTED USE CHEMICAL") 
+BrCal <- ex9 %>% filter(Commodity == "CAULIFLOWER" || Commodity == "BROCCOLI",`Info on Measurement`==" MEASURED IN LB" , Label == "RESTRICTED USE CHEMICAL") 
 
 BrCal$Value <- as.numeric(BrCal$Value)
 
 grapht <- BrCal %>% group_by(Name) %>% summarize(mean(Value))
 
-View(grapht)
 
 ggplot(graph, mapping=aes(x= Name, y=`mean(Value)`)) + 
-  geom_bar(stat = "identity") + 
+  geom_bar(stat = "identity", fill="steelblue") + 
   coord_flip() +
   labs(y = "Values (LB) ", title = "Average values of restricted chemicals")
 
@@ -209,29 +184,16 @@ ggplot(graph, mapping=aes(x= Name, y=`mean(Value)`)) +
 
 BrCal1 <- rbind(Br1,Cal1)
 
-View(BrCal1)
 
 grapht <- BrCal %>% group_by(Commodity, Name) %>% summarize(mean(Value))
 ggplot(grapht, mapping=aes(x= Name, y=`mean(Value)`, fill = Commodity)) + 
-  geom_bar(position="dodge",stat = "identity") + 
+  geom_bar( position=position_dodge(preserve="single"),stat="identity") +
   coord_flip() +
   labs(y = "Values (LB) ", title = "Average values of restricted chemicals")
 
-# BETA-CYFLUTHRIN
-# BIFENTHRIN 
-# ESFENVALERATE
-# IMIDACLOPRID
-# LAMBDA-CYHALOTHRIN  
-# METHOMYL
-# NALED
-# PERMETHRIN
-# ZETA-CYPERMETHRIN           
-# CHLORANTRANILIPROLE
-# CHLORPYRIFOS
-# DIAZINON
-# PRONAMIDE
-# DISULFOTON
-# EMAMECTIN BENZOATE
+dev_mode(FALSE)
+
+#Let's create a table of the retricted chemicals properties
 
 #Data collected from https://comptox.epa.gov/dashboard
 # BETA-CYFLUTHRIN and ZETA-CYPERMETHRIN  
@@ -253,22 +215,19 @@ df14 = read.csv("14.csv",sep = ";")
 df15 = read.csv("15.csv",sep = ";")
 
 
-as.tibble(df2)
-as.tibble(df3)
-as.tibble(df4)
-as.tibble(df5)
-as.tibble(df6)
-as.tibble(df7)
-as.tibble(df8)
-as.tibble(df10)
-as.tibble(df11)
-as.tibble(df12)
-as.tibble(df13)
-as.tibble(df14)
-as.tibble(df15)
-
-View(df5)
-
+df2 <- as.tibble(df2)
+df3 <- as.tibble(df3)
+df4 <- as.tibble(df4)
+df5 <- as.tibble(df5)
+df6 <- as.tibble(df6)
+df7 <- as.tibble(df7)
+df8 <- as.tibble(df8)
+df10 <- as.tibble(df10)
+df11 <- as.tibble(df11)
+df12 <- as.tibble(df12)
+df13 <- as.tibble(df13)
+df14 <- as.tibble(df14)
+df15 <- as.tibble(df15)
 
 df2 <- df2 %>% mutate( Name= "BIFENTHRIN") %>% filter(SPECIES == "earthworm" | SPECIES == "rat" )
 df3 <- df3 %>% mutate( Name= "ESFENVALERATE") %>% filter(SPECIES == "earthworm" | SPECIES == "rat")
@@ -285,9 +244,6 @@ df14 <- df14 %>% mutate( Name= "DISULFOTON") %>% filter(SPECIES == "earthworm" |
 df15 <- df15 %>% mutate( Name= "EMAMECTIN BENZOATE") %>% filter(SPECIES == "earthworm" | SPECIES == "rat")
 
 
-
-View(tox1)
-
 tox <- rbind(df2,df3,df4,df5,df6,df7,df8,df10,df11,df12,df13,df14,df15)
 
 tox <- tox %>% filter(TYPE=="LC50" | TYPE == "LD50")
@@ -295,7 +251,7 @@ tox <- tox %>% filter(TYPE=="LC50" | TYPE == "LD50")
 
 tox1 <- tox %>% filter(UNITS  == "mg/kg") %>% 
   group_by(Name,SPECIES,UNITS) %>%
-  summarize(round(mean(PRIORITY)),round(mean(VALUES),3)) %>%
+  summarize(round(mean(PRIORITY)),mean(VALUES)) %>%
   rename( "Values" = `mean(VALUES)`, 
           "Priority" = `round(mean(PRIORITY))`, 
           "Units" = UNITS)
@@ -321,35 +277,60 @@ tox1 %>% filter(!is.na(`Values for LC50 on earthworms`)) %>% ggplot(aes(x=Name, 
   geom_bar(stat="identity",fill="steelblue") + coord_flip() +
   labs(x="Chemical",title = "Aver. Quantity of chemicals causing mortality in earthworms")
 
-
-restr <- ex9 %>% filter(Label == "RESTRICTED USE CHEMICAL") %>% group_by(Name)
-
-tox1 <- tox1 %>% group_by(Name)
-
-tox1$Name <- as.character(tox1$Name)
-restr <- as.character(tox1$Name)
-
 ID <- c(128825, 90100, 59101, 57801, 32501,122806, 109303, 129099, 128897, 90301,34401, 109701,101701,118831,129064)
 
 
-left1 <- c("BETA-CYFLUTHRIN", NA, NA,NA,NA)
+#data for Beta-Cyfluthrin were found in 
+#https://cfpub.epa.gov/ecotox/advanced_query.htm
+
+dfBeta = read.csv("Beta.csv",sep = ";")
+
+vec <- dfBeta[,"Conc.1..Author." ]
+
+vec <- mean(vec, na.rm=TRUE)
+
+left1 <- c("BETA-CYFLUTHRIN", "mg/kg", NA,NA,vec)
+
+#data for Zeta-Cypermethrin was found in
+#http://pmep.cce.cornell.edu/profiles/extoxnet/carbaryl-dicrotophos/cypermet-ext.html
+#Let's take the website as reliable
+#The website gives different ranges of mortality for rats depending on the cis/trans-isomers present in the chemical 
+#Let's calculate the mean
+
+ran1ma <- c(187,326)
+ran1fe <- c(150,500)
+ran2ma <- c(357,2000)
+ran2fe <- c(82,779)
+
+vec1 <- c(mean(ran1ma), mean(ran1fe), mean(ran2ma), mean(ran2fe))
+
+vec1 <- mean(vec1)
+
+left2 <-c("ZETA-CYPERMETHRIN","mg/kg",NA,NA,vec1)
 
 
-left2 <-c("ZETA-CYPERMETHRIN",NA,NA,NA,NA)
-
-tox1
 
 tox1[nrow(tox1) + 1,] <- left1
 tox1[nrow(tox1) + 1,] <- left2
 
-View(restr)
-restr
+
 tox1 <- add_column(tox1, ID)
+
+coeff <- read.csv("Assig5.csv",sep=";")
+coeff <- as.tibble(coeff)
+
+coeff <- coeff %>% rename("Soil Adsorption coeff"=Soil.Absorbed.Coeff..L.Kg.) %>%
+  select(Name, `Soil Adsorption coeff`)
+
+tox1 <- inner_join(tox1,coeff)
+
+#Let's join tox1 with the veg table with observations related to restricted use chemicals.
+
+restr <- ex9 %>% filter(Label == "RESTRICTED USE CHEMICAL") %>% group_by(Name)
 
 tox1$ID <- as.numeric(tox1$ID)
 restr$ID <- as.numeric(restr$ID)
 
-View(tox1)
 
 
 tab1 <- left_join(tox1,restr, by= "ID")
@@ -357,12 +338,10 @@ tab1 <- left_join(tox1,restr, by= "ID")
 View(tab1)
 tab1 <- select(tab1, - Name.y , -ID)
 
-tab1 <- tab1[,c(7:16, 1,6,17,2,3 : 5)]
+tab1 <- tab1 %>% rename("Name" = Name.x)
 
+tab1 <- tab1[,c(7:14,2,15,1,16,17,3,4,5,6)]
 
+View(tab1)
 
-rbind(y,tox1)
-
-
-View(inner_join(tox1, restr, by="Name", copy = TRUE))
 
