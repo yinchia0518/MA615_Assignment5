@@ -351,6 +351,6 @@ tab1 <- tab1[,c(7:14,2,15,1,16,17,3,4,5,6)]
 
 View(tab1)
 
+write.csv(tab1, file = "finaltab.csv")
 
-tox2 <- read.csv("toxicity.csv")
-View(tox2)
+
