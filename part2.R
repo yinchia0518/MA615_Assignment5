@@ -179,7 +179,7 @@ ggplot(graph, mapping=aes(x= Name, y=`mean(Value)`)) +
 BrCal1 <- rbind(Br1,Cal1)
 
 
-grapht <- BrCal %>% group_by(Commodity, Name) %>% summarize(mean(Value))
+grapht <- BrCal1 %>% group_by(Commodity, Name) %>% summarize(mean(Value))
 ggplot(grapht, mapping=aes(x= Name, y=`mean(Value)`, fill = Commodity)) + 
   geom_bar( position=position_dodge(preserve="single"),stat="identity") +
   coord_flip() +

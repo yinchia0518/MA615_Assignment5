@@ -1,7 +1,7 @@
 ---
 title: "Analysis on Veg1.xslx"
 output: 
-  ios_slides 
+  ioslides_presentation 
 fontsize: 8 pt
 ---
 
