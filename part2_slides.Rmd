@@ -18,7 +18,7 @@ library(knitr)
 library(kableExtra)
 
 
-
+#URL of the slides to be found in the README.md file
 
 
 
