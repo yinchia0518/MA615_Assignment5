@@ -129,6 +129,7 @@ ggplot(Br1, aes( x=Name, y= Value, fill=Year))+
   geom_bar( position=position_dodge(preserve="single"),stat="identity") +
   coord_flip() +  scale_fill_manual(values = c("yellow","orange", "red", "brown")) 
 
+#Sprouts do not contain restricted chemicals
 
 
 #Analysis on Restricted Chemicals on Cauliflower on Average
@@ -156,13 +157,6 @@ ggplot(graph, mapping=aes(x= Name, y=`mean(Value)` )) +
 ggplot(Cal1, aes( x=Name, y= Value, fill=Year))+
   geom_bar( position=position_dodge(preserve="single"),stat="identity") +
   coord_flip() +  scale_fill_manual(values = c("yellow","orange", "red", "brown"))
-
-
-Sprouts <- ex9 %>% filter(`Info on Measurement`==" MEASURED IN LB" , Label == "RESTRICTED USE CHEMICAL") 
-#No restricted chemicals
-Sprouts
-
-
 
 
 #Total Average Between Broccoli and Calliflowers
@@ -335,7 +329,6 @@ restr$ID <- as.numeric(restr$ID)
 
 tab1 <- left_join(tox1,restr, by= "ID")
 
-View(tab1)
 tab1 <- select(tab1, - Name.y , -ID)
 
 tab1 <- tab1 %>% rename("Name" = Name.x)

@@ -1,0 +1,319 @@
+---
+title: "Analysis on Veg1.xslx"
+output: 
+  ios_slides 
+fontsize: 8 pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(readxl)
+library(stringr)
+library(munsell)
+library(ggplot2)
+
+
+
+
+
+
+
+veg.1 <- read_xlsx("veg1.xlsx")
+
+
+## now get the count for each column
+
+c <- apply(veg.1, 2, n_distinct)
+
+e <- names(c[c>1])
+
+
+
+veg.2 <- select(veg.1, e)
+
+
+
+veg.3 <- dplyr::rename(veg.2, 
+                       Geo = `Geo Level`, 
+                       State = `State ANSI`,
+                       Data = `Data Item`,
+                       Category = `Domain Category`)
+
+
+
+#let's separate Category into Label and Quant
+
+ex1 <- separate(veg.3,Category,into = c("Label", "Quant"), sep=",")
+
+#let's separate Quant into Type and Name
+
+ex2 <- separate(ex1, Quant, into=c("Type","Name"), sep = ":")
+
+ex3 <- select(ex2, -Domain)
+
+#Let's separate and tidy up the fertilizer's names.
+
+ex4 <- ex3 %>% separate(Label, into = c("Label","Type1"), sep=":")
+
+ex4$Name <- with(ex4,ifelse(is.na(Type),Type1,Name))
+
+ex4 <- select(ex4, -Type1)
+
+
+
+#Let's focus now on tidying up the "Data" column
+#The data column gives info on the kind of measurement
+#that took place for a given observation
+
+ex5 <- ex4 %>% separate(Data, into = c("name", "Measurement"), sep = "-")
+
+ex6 <- ex5 %>% separate(Measurement, into = c("Measurement", "Info on Measurement", "Stats"), sep = ",")
+
+#We now can discern the observation based on the measurement and its unit
+
+#Let's rename the column Name:
+#this column is equal to commodity for some observations, but not for all, so we shouldn't drop it
+#as it may add some useful information
+#ex7[,"Info on Commodity"] %>% unique()
+
+ex7 <- ex6 %>% rename("Info on Commodity"=name)
+
+ex7.1 <- ex7 %>% mutate(Geo = replace(Geo, Geo =="REGION : MULTI-STATE", "MULTI-STATE"))
+
+#Let's split the "Name" column into Name and ID and delete the brackets
+
+ex8 <- ex7.1 %>% separate(Name, into = c("Name", "ID"), sep = "=") %>% 
+  separate(Name, into = c("Delete", "Name"), sep = "[()]") %>%
+  separate(ID, into = c("ID", "Delete1"), sep = "[)]") %>%
+  select(-Delete, -Delete1)
+
+#Finally, let's replace the values in Value such as (D),(Z) and (NA) with NA
+
+ex9 <- ex8%>% filter(!Value %in% c("(D)", "(Z)", "(NA)", NA)) %>%
+  filter(!Name %in% c("TOTAL")) %>%
+  filter(Stats %in% NA) %>%
+  select(-Stats)
+
+#Let's now focus our Analysis on the observation that involved the use of Restricted Chemicals
+
+ex11 <- ex9 %>% filter(Label == "RESTRICTED USE CHEMICAL")
+
+
+
+```
+
+
+
+## Team members|Group 6
+
+- Yue Wu 
+- YinChia Huang 
+- Francesco Ignazio Re
+
+
+## Outline
+
+- Introduction
+- Data Cleaning
+- Data Visualization
+- Data Exploration
+- Joining Toxicity info
+- Conclusion
+
+
+## Introduction
+
+The aim of this analysis is to give a clear understanding of the data-set veg1.xlsx. In order to do that, we intend to make the data set more intuitive to read and work on. 
+
+###What's the data set about? {.smaller}
+
+-The data set gathers information on the amount and type of chemicals found in food crops between the years 1990/2016 (not all the years are present), showing the location of the observations and the kind of measurement carried out. 
+
+We would like to get a deeper insight in order to understand if the use of these chemicals inpacts significantly the quality of the crops and the land they were grown in. 
+
+
+
+
+## Data Cleaning
+
+The first thing to do is to better organize the information that we have. We make sure that every variable has a column of its own. 
+Below, some examples:
+
+```{ex1 eval=FALSE, echo= TRUE }
+
+#Separating the column Category into Labe and Quant
+
+ex1 <- separate(veg.3,Category,into = c("Label", "Quant"), sep=",")
+
+#Separating the colum Quant into Type and Name
+
+ex2 <- separate(ex1, Quant, into=c("Type","Name"), sep = ":")
+
+#Separating chemicals name from their IDs, and deleting brackets
+
+ex8 <- ex7.1 %>% separate(Name, into = c("Name", "ID"), sep = "=")%>% 
+  separate(Name, into = c("Delete", "Name"), sep = "[()]") %>%
+  separate(ID, into = c("ID", "Delete1"), sep = "[)]") %>%
+  select(-Delete, -Delete1)
+
+
+
+```
+
+##Data Cleaning
+A tricky step was understanding that many observations where just statistical results of a previous analysis. We selected them and separeted their values from the ones of the real observations.
+Finally, we replace the values that lack any useful information with NAs.
+
+```{ex1 eval=FALSE, echo= TRUE }
+#We discern the observation that are statistical results.
+ex6 <- ex5 %>%
+  separate(Measurement,
+  into = c("Measurement", "Info on Measurement", "Stats"), 
+  sep = ",")
+
+#Finally, let's replace the values such as (D),(Z) and (NA) 
+#with NA and separate actual values from statistical results
+
+ex9 <- ex8%>% filter(!Value %in% c("(D)", "(Z)", "(NA)", NA))%>%
+  filter(!Name %in% c("TOTAL")) %>%
+  filter(Stats %in% NA) %>%
+  select(-Stats)
+
+```
+
+
+## Data Visualization
+
+After tidying our dataset, we are able to start visualizing the information we got, focusing on our area of interest: the amount of restricted chemicals found in the crops.
+
+It turns out that Broccoli and Cauliflowers and the only vegetables of the data set presenting restricted chemicals. 
+
+
+
+##Restricted Chemicals in Broccoli
+
+```{r echo=FALSE}
+#Analysis on Restricted Chemicals on Broccoli on Average
+
+Br1 <- ex9 %>% filter(Commodity == "BROCCOLI", `Info on Measurement`==" MEASURED IN LB" , Label == "RESTRICTED USE CHEMICAL") 
+Br1$Value <- as.numeric(Br1$Value)
+Br1$Year <- as.numeric(Br1$Year)
+Br1$Year <- as.factor(Br1$Year)
+
+graph <- Br1 %>% group_by(Name) %>% summarize(mean(Value))
+
+ggplot(graph, mapping=aes(x= Name, y=`mean(Value)` )) + 
+  geom_bar(stat = "identity", fill="steelblue") + 
+  coord_flip() +
+  labs(y = "Values (LB) ", title = "Average values of restricted chemicals in broccoli ") 
+
+```
+
+
+
+##Restricted Chemicals in Cauliflowers
+
+```{r echo=FALSE}
+#Analysis on Restricted Chemicals on Cauliflower on Average
+
+Cal1 <- ex9 %>% filter(Commodity == "CAULIFLOWER", `Info on Measurement`==" MEASURED IN LB" , Label == "RESTRICTED USE CHEMICAL") 
+
+Cal1$Value <- as.numeric(Cal1$Value)
+Cal1$Year <- as.numeric(Cal1$Year)
+Cal1$Year <- as.factor(Cal1$Year)
+
+
+
+graph <- Cal1 %>% group_by(Name) %>% summarize(mean(Value))
+
+
+ggplot(graph, mapping=aes(x= Name, y=`mean(Value)` )) + 
+  geom_bar(stat = "identity", fill="steelblue") + 
+  coord_flip() +
+  labs(y = "Values (LB) ", title = "Average values of restricted chemicals in calliflowers ")
+
+
+```
+
+
+
+
+
+##Values of restricted chemicals in Broccoli by year
+```{r echo=FALSE}
+
+
+#Analysis on Restricted Chemicals on Broccoli by year
+
+
+#The graph below presents different widths according to the number of years where each chemical appears
+ggplot(Br1, aes( x=Name, y= Value, fill=Year))+
+  geom_bar( position = "dodge",stat="identity") + coord_flip() +  scale_fill_manual(values = c("yellow","orange", "red", "brown")) 
+
+
+#the graph below works with the development version of ggplot only. It solves the difference in width of the bars
+
+#to run it, install devtools::install_github("tidyverse/ggplot2")
+
+#(see the script part2 for more information)
+
+
+#ggplot(Br1, aes( x=Name, y= Value, fill=Year))+
+ # geom_bar( position=position_dodge(preserve="single"),stat="identity") +
+  #coord_flip() +  scale_fill_manual(values = c("yellow","orange", "red", "brown")) 
+
+
+
+```
+
+
+##Values of restricted chemicals in Caulliflowers by year
+```{r echo=FALSE}
+
+
+#plot with normal version of ggplot2
+
+ggplot(Cal1, aes( x=Name, y= Value, fill=Year))+
+ geom_bar( position = "dodge",stat="identity") + coord_flip() +  scale_fill_manual(values = c("yellow","orange", "red", "brown")) 
+
+
+
+#the graph below works with the development version of ggplot only. It solves the difference in width of the bars
+
+#to run it, install devtools::install_github("tidyverse/ggplot2")
+
+#ggplot(Cal1, aes( x=Name, y= Value, fill=Year))+
+ # geom_bar( position=position_dodge(preserve="single"),stat="identity") +
+  #coord_flip() +  scale_fill_manual(values = c("yellow","orange", "red", "brown"))
+
+
+
+
+
+```
+
+
+
+##Total Average Between Broccoli and Calliflowers 
+
+
+```{r echo=FALSE}
+
+BrCal1 <- rbind(Br1,Cal1)
+
+grapht <- BrCal1 %>% group_by(Commodity, Name) %>% summarize(mean(Value))
+
+ggplot(grapht, mapping=aes(x= Name, y=`mean(Value)`, fill = Commodity)) + 
+ geom_bar( position="dodge",stat="identity") +
+ coord_flip() +
+ labs(y = "Values (LB) ", title = "Average values of restricted chemicals")
+
+
+#DEV VERSION
+#ggplot(grapht, mapping=aes(x= Name, y=`mean(Value)`, fill = Commodity)) + 
+ # geom_bar( position=position_dodge(preserve="single"),stat="identity") +
+  #coord_flip() +
+  #labs(y = "Values (LB) ", title = "Average values of restricted chemicals")
+
+```
