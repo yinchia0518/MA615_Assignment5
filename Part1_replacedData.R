@@ -78,6 +78,25 @@ ggplot(MR_DailyNoon, aes(x = FullTime)) +
   ylab(label="Celsius degrees") + 
   xlab("Time")
 
+MR_1988_DailyNoon <- subset(MR_DailyNoon, YYYY==1988)[,c(2:6)]  
+MR_2017_DailyNoon <- subset(MR_DailyNoon, YYYY==2017)[,c(2:6)]
+colnames(MR_2017_DailyNoon) <- c("MM","DD","hh","ATMP2017","WTMP2017")
+colnames(MR_1988_DailyNoon) <- c("MM","DD","hh","ATMP1988","WTMP1988")
+
+#combine 1988 and 2017 into one table
+MR_1988VS2017_DailyNoon <- as.data.frame(left_join(MR_1988,MR_2017))
+typeof(MR_1988VS2017_DailyNoon)
+#visualize the data
+ggplot(MR_1988VS2017_DailyNoon, aes(x = FullTime)) + 
+  geom_line(aes(y = ATMP, colour ="Air Temperature")) + 
+  geom_line(aes(y = WTMP, colour = "Water Temperature")) +
+  scale_colour_manual("", 
+                      breaks = c("Air Temperature", "Water Temperature"),
+                      values = c("pink", "blue"))+
+  xlab("Time") +
+  scale_y_continuous("Temperatura (C)", limits = c(0,10)) + 
+  labs(title="A time series composed of 30 years of daily Air Temperature
+       and Sea Temperature readings recorded at noon")
 
 # outliersIndex <- function(data) {
 #   q1 <- quantile(data)[2]
