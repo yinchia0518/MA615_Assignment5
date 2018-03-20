@@ -1,7 +1,9 @@
 ---
 title: "Analysis on Veg1.xslx"
 output: 
-  ioslides_presentation 
+  ioslides_presentation:
+    widescreen: true
+    smaller: true 
 fontsize: 8 pt
 ---
 
@@ -12,6 +14,8 @@ library(readxl)
 library(stringr)
 library(munsell)
 library(ggplot2)
+library(knitr)
+library(kableExtra)
 
 
 
@@ -107,18 +111,16 @@ ex11 <- ex9 %>% filter(Label == "RESTRICTED USE CHEMICAL")
 
 ## Team members|Group 6
 
-- Yue Wu 
-- YinChia Huang 
 - Francesco Ignazio Re
-
+- YinChia Huang 
+- Yue Wu 
 
 ## Outline
 
 - Introduction
 - Data Cleaning
-- Data Visualization
-- Data Exploration
-- Joining Toxicity info
+- Data Visualization and Exploration
+- Chemicals Toxicity information
 - Conclusion
 
 
@@ -183,7 +185,7 @@ ex9 <- ex8%>% filter(!Value %in% c("(D)", "(Z)", "(NA)", NA))%>%
 ```
 
 
-## Data Visualization
+## Data Visualization and Exploration
 
 After tidying our dataset, we are able to start visualizing the information we got, focusing on our area of interest: the amount of restricted chemicals found in the crops.
 
@@ -268,7 +270,7 @@ ggplot(Br1, aes( x=Name, y= Value, fill=Year))+
 ```
 
 
-##Values of restricted chemicals in Caulliflowers by year
+##Values of restricted chemicals in Cauliflowers by year
 ```{r echo=FALSE}
 
 
@@ -295,7 +297,7 @@ ggplot(Cal1, aes( x=Name, y= Value, fill=Year))+
 
 
 
-##Total Average Between Broccoli and Calliflowers 
+##Total Average Between Broccoli and Cauliflowers 
 
 
 ```{r echo=FALSE}
@@ -315,5 +317,124 @@ ggplot(grapht, mapping=aes(x= Name, y=`mean(Value)`, fill = Commodity)) +
  # geom_bar( position=position_dodge(preserve="single"),stat="identity") +
   #coord_flip() +
   #labs(y = "Values (LB) ", title = "Average values of restricted chemicals")
+
+```
+
+##Chemicals toxicity information {.smaller}
+Now that we have a general understanding of the quantity of each chemicals in the vegetables, we would like to know more about the chemical properties. For this reason, we gathered information on every chemical and created a table displaying:
+
+-Soil Adsorption Coefficient: measures the amount of chemical substance adsorbed onto soil per amount of water. If the values are very low, then the soil doesn't adsorb the chemical properly and there's high risk of ground water contamination.
+
+-LD50 on rats: value of chemical necessary to cause mortality in rats. (In the study the chemical is administered orally)
+
+-LC50 on earthworms: concentration of chemical in air in order to cause mortality in earthworms.
+
+
+##Toxicity table
+
+Here the first rows of the table:
+```{r, results='asis'}
+
+dset1 <-read.csv("toxicity.csv")
+knitr::kable(head(dset1),format = 'markdown')
+
+
+```
+
+##Analysis on toxicity by chemical in rats
+
+```{r echo=FALSE}
+
+
+
+df2 = read.csv("2.csv",sep = ";")
+df3 = read.csv("3.csv",sep = ";")
+df4 = read.csv("4.csv",sep = ";")
+df5= read.csv("5.csv",sep = ";")
+df6 = read.csv("6.csv",sep = ";")
+df7 = read.csv("7.csv",sep = ";")
+df8 = read.csv("8.csv",sep = ";")
+df10 = read.csv("10.csv",sep = ";")
+df11 = read.csv("11.csv",sep = ";")
+df12 = read.csv("12.csv",sep = ";")
+df13 = read.csv("13.csv",sep = ";")
+df14 = read.csv("14.csv",sep = ";")
+df15 = read.csv("15.csv",sep = ";")
+
+
+df2 <- as.tibble(df2)
+df3 <- as.tibble(df3)
+df4 <- as.tibble(df4)
+df5 <- as.tibble(df5)
+df6 <- as.tibble(df6)
+df7 <- as.tibble(df7)
+df8 <- as.tibble(df8)
+df10 <- as.tibble(df10)
+df11 <- as.tibble(df11)
+df12 <- as.tibble(df12)
+df13 <- as.tibble(df13)
+df14 <- as.tibble(df14)
+df15 <- as.tibble(df15)
+
+df2 <- df2 %>% mutate( Name= "BIFENTHRIN") %>% filter(SPECIES == "earthworm" | SPECIES == "rat" )
+df3 <- df3 %>% mutate( Name= "ESFENVALERATE") %>% filter(SPECIES == "earthworm" | SPECIES == "rat")
+df4 <- df4 %>% mutate( Name= "IMIDACLOPRID") %>% filter(SPECIES == "earthworm" | SPECIES == "rat")
+df5 <- df5 %>% mutate( Name= "LAMBDA-CYHALOTHRIN") %>% filter(SPECIES == "earthworm" | SPECIES == "rat")
+df6 <- df6 %>% mutate( Name= "METHOMYL") %>% filter(SPECIES == "earthworm" | SPECIES == "rat")
+df7 <- df7 %>% mutate( Name= "NALED") %>% filter(SPECIES == "earthworm" | SPECIES == "rat")
+df8 <- df8 %>% mutate( Name= "PERMETHRIN") %>% filter(SPECIES == "earthworm" | SPECIES == "rat")
+df10 <- df10 %>% mutate( Name= "CHLORANTRANILIPROLE") %>% filter(SPECIES == "earthworm" | SPECIES == "rat")
+df11 <- df11 %>% mutate( Name= "CHLORPYRIFOS") %>% filter(SPECIES == "earthworm" | SPECIES == "rat")
+df12 <- df12%>% mutate( Name= "DIAZINON") %>% filter(SPECIES == "earthworm" | SPECIES == "rat")
+df13 <- df13 %>% mutate( Name= "PRONAMIDE") %>% filter(SPECIES == "earthworm" | SPECIES == "rat")
+df14 <- df14 %>% mutate( Name= "DISULFOTON") %>% filter(SPECIES == "earthworm" | SPECIES == "rat")
+df15 <- df15 %>% mutate( Name= "EMAMECTIN BENZOATE") %>% filter(SPECIES == "earthworm" | SPECIES == "rat")
+
+
+tox <- rbind(df2,df3,df4,df5,df6,df7,df8,df10,df11,df12,df13,df14,df15)
+
+tox <- tox %>% filter(TYPE=="LC50" | TYPE == "LD50")
+
+
+tox1 <- tox %>% filter(UNITS  == "mg/kg") %>% 
+  group_by(Name,SPECIES,UNITS) %>%
+  summarize(round(mean(PRIORITY)),mean(VALUES)) %>%
+  rename( "Values" = `mean(VALUES)`, 
+          "Priority" = `round(mean(PRIORITY))`, 
+          "Units" = UNITS)
+
+tox1 <- ungroup(tox1)
+
+tox1$SPECIES <- as.character(tox1$SPECIES)
+tox1$Units <- as.character(tox1$Units)
+tox1$Values <- as.numeric(tox1$Values)
+
+
+
+tox1 <- spread(tox1, key= SPECIES, value = Values )
+
+
+tox1 <- tox1 %>% rename("Values for LD50 on rats" = rat, "Values for LC50 on earthworms"=earthworm)
+tox1 %>% filter(!is.na(`Values for LD50 on rats`)) %>% ggplot(aes(x=Name, y=`Values for LD50 on rats`)) + 
+  geom_bar(stat="identity",fill="steelblue") + coord_flip() +
+  labs(x="Chemical",title = "Aver. Quantity of chemicals (mg/kg) causing mortality in rats")
+```
+
+##Analysis on toxicity by chemical in earthworms
+
+```{r echo=FALSE}
+
+tox1 %>% filter(!is.na(`Values for LC50 on earthworms`)) %>% ggplot(aes(x=Name, y=`Values for LC50 on earthworms`)) + 
+  geom_bar(stat="identity",fill="steelblue") + coord_flip() +
+  labs(x="Chemical",title = "Aver. Quantity of chemicals causing mortality in earthworms")
+```
+
+
+##Joining toxicity info to the overall table
+
+```{r, results='asis'}
+
+dset1 <-read.csv("finaltab.csv")
+ knitr::kable(dset1, format = "markdown", table.attr = "style='width:10%;'")
 
 ```

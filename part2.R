@@ -310,13 +310,27 @@ tox1[nrow(tox1) + 1,] <- left2
 
 tox1 <- add_column(tox1, ID)
 
+
 coeff <- read.csv("Assig5.csv",sep=";")
+
 coeff <- as.tibble(coeff)
+
+ID <- c(118831, 128825,109303,129099, 128897,90301,34401,109701,129064,90100,59101,57801,101701,32501,122806)
 
 coeff <- coeff %>% rename("Soil Adsorption coeff"=Soil.Absorbed.Coeff..L.Kg.) %>%
   select(Name, `Soil Adsorption coeff`)
 
-tox1 <- inner_join(tox1,coeff)
+coeff <- coeff %>% filter(!Name == "")
+
+coeff <- add_column(coeff,ID)
+
+View(coeff)
+
+
+tox2 <- left_join(tox1,coeff,by = "ID")
+
+
+write.csv(tox1, file = "toxicity.csv")
 
 #Let's join tox1 with the veg table with observations related to restricted use chemicals.
 
@@ -338,3 +352,5 @@ tab1 <- tab1[,c(7:14,2,15,1,16,17,3,4,5,6)]
 View(tab1)
 
 
+tox2 <- read.csv("toxicity.csv")
+View(tox2)
