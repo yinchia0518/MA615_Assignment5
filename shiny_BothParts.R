@@ -6,7 +6,7 @@ annaulTemprature <- annaulTemprature[,-1]
 #Part2 data
 ex9 <- read_csv("ex9.csv")
 ex9 <- subset(ex9[,-1])
-tox1 <- read_csv("tox1.csv")
+tox1 <- read_csv("toxicity.csv")
 tox1 <- subset(tox1[,-1])
 
 #SHINY DASHBOARD
@@ -53,7 +53,7 @@ ui <- dashboardPage(
                            helpText("Chemical 'PRONAMIDE' belongs to Type 'HERBICIDE'.",
                                     br(),
                                     "All other chemicals belong to Type 'INSECTICIDE'."),
-                           helpText("All results are assessed as 'acute risk' with priority level 6.")))
+                           helpText("The smaller is the value needed to cause death in rats, the more toxic the chemical is.")))
                 
               ),
               fluidRow(
@@ -160,7 +160,8 @@ server <- function(input, output) {
   )
   
   output$plot2 <- renderPlot({
-    data <- as.data.frame(tox1)
+    #We don't take in EMAMECTIN BENZOATE as it has NA value on the LD50 column
+    data <- as.data.frame(tox1[-6,])
     rownames(data) <- data[,1]
     barplot(data[,5],
             border= c(1:12),
