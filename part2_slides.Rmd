@@ -270,7 +270,7 @@ ggplot(Br1, aes( x=Name, y= Value, fill=Year))+
 ```
 
 
-##Values of restricted chemicals in Cauliflowers by year
+##Values of restricted chemicals in Cauliflowers by year {.smaller}
 ```{r echo=FALSE}
 
 
@@ -336,6 +336,7 @@ Here the first rows of the table:
 ```{r, results='asis'}
 
 dset1 <-read.csv("toxicity.csv")
+dset1 <- dset1[,2:7]
 knitr::kable(head(dset1),format = 'markdown')
 
 
@@ -430,11 +431,32 @@ tox1 %>% filter(!is.na(`Values for LC50 on earthworms`)) %>% ggplot(aes(x=Name, 
 ```
 
 
-##Joining toxicity info to the overall table
+##Joining toxicity info to the overall table {.smaller}
+(first 9 column)
 
 ```{r, results='asis'}
 
 dset1 <-read.csv("finaltab.csv")
- knitr::kable(dset1, format = "markdown", table.attr = "style='width:10%;'")
+
+dset2 <- dset1[1:5,2:10]
+
+dset3 <- dset1[1:5,11:18]
+
+
+ knitr::kable(dset2, format = "markdown")
+
+```
+
+
+
+##Joining toxicity info to the overall table  {.smaller}
+(last 8 column)
+
+```{r, results='asis'}
+
+dset3 <- dset3 %>% rename("LC50 on earthworms" = Values.for.LC50.on.earthworms,
+                          "LD50 on rats" = Values.for.LD50.on.rats,
+                          "Soil Adsorption Coeff " = Soil.Adsorption.coeff)
+knitr::kable(dset3, format = "markdown")
 
 ```
